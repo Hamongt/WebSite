@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Meu Mundo</title>
+    <link rel="stylesheet" href="assets/social-media-phone-icons/css/login.css">
+    <link rel="icon" type="image/png" href="assets/icones/bonecoazul.png">
+</head>
+<body>
+
+    <!-- ===== BOLHAS DE FUNDO ===== -->
+    <div class="bolhas-login">
+        <div class="bolha-login"></div>
+        <div class="bolha-login"></div>
+        <div class="bolha-login"></div>
+        <div class="bolha-login"></div>
+        <div class="bolha-login"></div>
+    </div>
+
+    <!-- ===== JANELA DE LOGIN ===== -->
+    <div class="janela-login">
+
+        <!-- ===== BARRA DE TÍTULO ===== -->
+        <div class="barra-login">
+            <div class="titulo-login">
+                <img src="assets/icones/bonecoazul.png" class="icone-titulo-login" alt="🔐">
+                 Login - Meu Mundo
+            </div>
+            <div class="botoes-login">
+                <button class="btn-min-login">─</button>
+                <button class="btn-max-login">□</button>
+                <button class="btn-close-login" onclick="window.close()">✕</button>
+            </div>
+        </div>
+
+        <!-- ===== MENU ===== -->
+        <div class="menu-login">
+            <button class="menu-btn-login ativo" id="tabLoginBtn"> Login</button>
+            <a href="cadastro.html" class="menu-btn-login-link"> Cadastro</a>
+            <button class="menu-btn-login"> Ajuda</button>
+        </div>
+
+        <!-- ===== CONTEÚDO ===== -->
+        <div class="conteudo-login">
+
+            <!-- FORMULÁRIO DE LOGIN -->
+            <div class="form-login" id="formLogin">
+                <div class="avatar-login">
+                    <img src="assets/icones/bonecoazul.png" alt="Avatar">
+                    <h2> Bem-vindo de volta!</h2>
+                    <p>Digite suas credenciais para acessar</p>
+                </div>
+
+                <div class="campo-login">
+                    <label> Usuário</label>
+                    <input type="text" id="loginUser" placeholder="Gabriel Taveira" class="input-login">
+                </div>
+
+                <div class="campo-login">
+                    <label> Senha</label>
+                    <input type="password" id="loginPass" placeholder="••••••••" class="input-login">
+                </div>
+
+                <div class="opcoes-login">
+                    <label class="checkbox-login">
+                        <input type="checkbox"> Lembrar-me
+                    </label>
+                    <a href="#" class="link-esqueci-login">Esqueci minha senha</a>
+                </div>
+
+                <button class="btn-entrar-login" id="loginBtn"> Entrar</button>
+                <p id="loginErro" class="erro-login"></p>
+            </div>
+
+        </div>
+
+        <!-- ===== RODAPÉ ===== -->
+        <div class="rodape-login">
+            <span>🌊 Frutiger Aero • Windows 7 • Y2K</span>
+            <span class="link-cadastro-rodape">
+                Não tem conta? <a href="cadastro.html">Crie uma!</a>
+            </span>
+        </div>
+
+    </div>
+
+    <script src="assets/scripts/login.js"></script>
+
+</body>
+</html>

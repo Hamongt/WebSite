@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Meu Mundo</title>
+    <link rel="stylesheet" href="assets/social-media-phone-icons/css/login.css">
+    <link rel="icon" type="image/png" href="assets/icones/iconeverde.png">
+</head>
+<body>
+
+    <div class="bolhas-login">
+        <div class="bolha-login"></div>
+        <div class="bolha-login"></div>
+        <div class="bolha-login"></div>
+        <div class="bolha-login"></div>
+        <div class="bolha-login"></div>
+    </div>
+
+    <div class="janela-login">
+
+        <div class="barra-login">
+            <div class="titulo-login">
+                <img src="assets/icones/iconeverde.png" class="icone-titulo-login" alt="📝">
+                 Cadastro - Meu Mundo
+            </div>
+            <div class="botoes-login">
+                <button class="btn-min-login">─</button>
+                <button class="btn-max-login">□</button>
+                <button class="btn-close-login" onclick="window.close()">✕</button>
+            </div>
+        </div>
+
+        <div class="menu-login">
+            <a href="lo.html" class="menu-btn-login-link"> Login</a>
+            <button class="menu-btn-login ativo"> Cadastro</button>
+            <button class="menu-btn-login"> Ajuda</button>
+        </div>
+
+        <div class="conteudo-login">
+
+            <div class="form-login form-cadastro-login ativo">
+                <div class="avatar-login">
+                    <img src="assets/iconEs/iconeverde.png" alt="Avatar">
+                    <h2> Criar nova conta</h2>
+                    <p>Preencha os dados para se cadastrar</p>
+                </div>
+
+                <div class="campo-login">
+                    <label> Nome de usuário (login)</label>
+                    <input type="text" id="cadUser" placeholder="Escolha um nome de usuário" class="input-login">
+                </div>
+
+                <div class="campo-login">
+                    <label> E-mail</label>
+                    <input type="email" id="cadEmail" placeholder="seu@email.com" class="input-login">
+                </div>
+
+                <div class="campo-login">
+                    <label> Senha</label>
+                    <input type="password" id="cadPass" placeholder="••••••••" class="input-login">
+                </div>
+
+                <div class="campo-login">
+                    <label> Confirmar senha</label>
+                    <input type="password" id="cadConfirm" placeholder="••••••••" class="input-login">
+                </div>
+
+                <!-- ===== NOVOS CAMPOS DE PERFIL ===== -->
+                <div class="campo-login">
+                    <label> Seu nome (como vai aparecer)</label>
+                    <input type="text" id="cadNome" placeholder="Ex: João Silva" class="input-login">
+                </div>
+
+                <button class="btn-entrar-login" id="cadBtn"> Criar conta</button>
+                <p id="cadErro" class="erro-login"></p>
+            </div>
+
+        </div>
+
+        <div class="rodape-login">
+            <span>🌊 Frutiger Aero • Windows 7 • Y2K</span>
+            <span class="link-cadastro-rodape">
+                Já tem conta? <a href="lo.html">Faça login!</a>
+            </span>
+        </div>
+
+    </div>
+
+    <script src="assets/scripts/cadastro.js"></script>
+
+</body>
+</html>
