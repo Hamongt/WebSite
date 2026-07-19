@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/windows_main.css"
+    >
+
+    <style>
+
+        html,
+        body {
+            margin: 0;
+
+            width: 100%;
+            height: 38px;
+
+            overflow: hidden;
+
+            background: transparent;
+        }
+
+        .barra {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="barra">
+
+        <div class="titulo">
+
+            <img
+                src="../assets/icones/iconeverde.png"
+                class="icone-titulo"
+                alt=""
+            >
+
+            <span id="saudacao">
+                Gabriel Taveira
+            </span>
+
+        </div>
+
+
+        <div class="botoes">
+
+            <button
+                class="min"
+                id="minimizarPrograma"
+            >
+                ─
+            </button>
+
+            <button
+                class="max"
+                id="maximizarPrograma"
+            >
+                □
+            </button>
+
+            <button
+                class="close"
+                id="fecharPrograma"
+            >
+                ✕
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* ==========================================
+           FECHAR PROGRAMA
+           ========================================== */
+
+        const botaoFechar =
+            document.getElementById("fecharPrograma");
+
+
+        botaoFechar.addEventListener(
+            "click",
+            function () {
+
+                window.parent.parent.postMessage(
+                    {
+                        tipo: "fecharPrograma"
+                    },
+                    "*"
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

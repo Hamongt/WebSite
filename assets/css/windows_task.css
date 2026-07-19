@@ -1,0 +1,162 @@
+/* ==========================================
+   TASKBAR WINDOWS VISTA
+   ========================================== */
+
+.windows-taskbar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 48px;
+
+    z-index: 999999;
+
+    display: flex;
+    align-items: center;
+
+    /* BARRA HORIZONTAL */
+    background: linear-gradient(
+        to bottom,
+        rgba(70, 82, 92, 0.98) 0%,
+        rgba(45, 54, 61, 0.98) 45%,
+        rgba(15, 20, 24, 1) 50%,
+        rgba(26, 32, 37, 1) 100%
+    );
+
+    border-top: 1px solid rgba(255, 255, 255, 0.65);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.20),
+        0 -2px 8px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ==========================================
+   BOTÃO START
+   ========================================== */
+
+.windows-start-button {
+    position: relative;
+
+    width: 58px;
+    height: 58px;
+
+    margin-left: 4px;
+    margin-bottom: 8px;
+
+    flex-shrink: 0;
+
+    border: none;
+    background: transparent;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+
+.windows-start-button img {
+    width: 50px;
+    height: 50px;
+
+    object-fit: contain;
+
+    display: block;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+
+.windows-start-button:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+}
+
+
+/* ==========================================
+   ÁREA DOS ÍCONES
+   ========================================== */
+
+.windows-taskbar-icons {
+    flex: 1;
+
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 3px 6px;
+
+    overflow: hidden;
+}
+
+/* ==========================================
+   BOTÕES DOS PROGRAMAS NA TASKBAR
+   ========================================== */
+
+.taskbar-program {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0 2px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    border-radius: 4px;
+}
+
+
+/* ÍCONES */
+
+.taskbar-program img {
+    width: 32px;
+    height: 32px;
+
+    max-width: 32px;
+    max-height: 32px;
+
+    object-fit: contain;
+
+    display: block;
+
+    background: transparent;
+}
+
+
+/* HOVER */
+
+.taskbar-program:hover {
+    background: rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        inset 0 0 6px rgba(255, 255, 255, 0.18);
+}
+
+
+/* CLIQUE */
+
+.taskbar-program:active {
+    transform: scale(0.95);
+}

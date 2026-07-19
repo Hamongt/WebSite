@@ -1,0 +1,3 @@
+Oi, baleiozinho
+Pra vc criar um novo programa é só criar uma pasta aqui dentro, nela tem que ter o main.html 
+(pode ser qualquer outro nome, só botei "main" pra indicar que é o principal). 
