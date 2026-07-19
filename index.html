@@ -1,527 +1,255 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyLike</title>
-    
-    <!-- ===== FAVICON ===== -->    
-    <link rel="icon" type="image/png" href="assets/icones/bonecoazul-Photoroom.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icones/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/icones/favicon-16x16.png">
-    <link rel="shortcut icon" href="assets/icones/bonecoazul.png">
-    
-    <!-- ===== CSS ===== -->
-    <link rel="stylesheet" href="assets/social-media-phone-icons/css/style.css">
-    
+
+    <title>SkyLike Desktop</title>
+
     <style>
-        /* ==========================================
-           CAIXAS DE DIÁLOGO - ESTILO HOME PAGE
-           ========================================== */
-        .caixa-dialogo {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
+        * {
+            margin: 0;
             padding: 0;
-            margin-bottom: 18px;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
             overflow: hidden;
-            transition: all 0.3s ease;
+
+            /* FUNDO PADRÃO DO DESKTOP */
+            background-image: url("./assets/images/bg/bg.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            font-family: "Segoe UI", sans-serif;
         }
 
-        .caixa-dialogo:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.10);
+        /* ==========================================
+           ÁREA ONDE OS PROGRAMAS SERÃO ABERTOS
+           ========================================== */
+        #programas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 48px;
+
+            z-index: 100;
+
+            background: transparent;
+
+            /* O container não bloqueia o desktop */
+            pointer-events: none;
         }
 
-        .caixa-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 18px;
-            background: rgba(255, 255, 255, 0.03);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            font-size: 14px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.7);
-        }
+        /* ==========================================
+           JANELA DE CADA PROGRAMA
+           ========================================== */
+        .programa-popup {
+            position: absolute;
 
-        .caixa-icone {
-            font-size: 18px;
-        }
+            top: 50%;
+            left: 50%;
 
-        .caixa-titulo {
-            flex: 1;
-            letter-spacing: 0.3px;
-        }
+            transform: translate(-50%, -50%);
 
-        .caixa-badge {
-            background: rgba(0, 200, 255, 0.12);
-            color: rgba(0, 200, 255, 0.7);
-            font-size: 10px;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
+            width: 950px;
+            height: 650px;
 
-        .caixa-corpo {
-            padding: 16px 18px 18px;
-            color: rgba(255, 255, 255, 0.80);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .caixa-corpo h2 {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 22px;
-            font-weight: 300;
-            margin: 0 0 8px 0;
-            letter-spacing: 0.5px;
-        }
-
-        .caixa-corpo p {
-            margin: 0 0 10px 0;
-        }
-
-        .caixa-corpo p:last-child {
-            margin-bottom: 0;
-        }
-
-        .caixa-divisor {
             border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            margin: 12px 0;
+            background: transparent;
+
+            /* O iframe do programa pode receber cliques */
+            pointer-events: auto;
+
+            z-index: 101;
         }
 
-        .caixa-data {
-            color: rgba(0, 200, 255, 0.5);
-            font-weight: 500;
-            font-size: 13px;
-        }
+        /* ==========================================
+           TASKBAR
+           ========================================== */
+        #windowsTask {
+            position: fixed;
 
-        .caixa-links .caixa-corpo {
-            padding: 14px 18px;
-        }
+            left: 0;
+            bottom: 0;
 
-        .etiquetas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+            width: 100%;
+            height: 70px;
 
-        .etiqueta {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: rgba(255, 255, 255, 0.5);
-            padding: 4px 14px;
-            border-radius: 16px;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
+            border: none;
+            background: transparent;
 
-        .etiqueta:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: rgba(255, 255, 255, 0.8);
-            border-color: rgba(255, 255, 255, 0.12);
-            transform: scale(1.02);
-        }
-
-        /* CORES DINÂMICAS */
-        .janela {
-            transition: background 0.5s ease;
-        }
-
-        #saudacao {
-            transition: color 0.3s ease;
-        }
-
-        .info-perfil h1,
-        .info-perfil p {
-            transition: color 0.3s ease;
+            z-index: 999999;
         }
     </style>
+
 </head>
+
 <body>
 
-    <!-- ===== VERIFICAÇÃO DE LOGIN ===== -->
+    <!-- ==========================================
+         PROGRAMAS ABERTOS
+         ========================================== -->
+    <div id="programas-container"></div>
+
+
+    <!-- ==========================================
+         TASKBAR
+         ========================================== -->
+    <iframe
+        src="windows_task.html"
+        id="windowsTask"
+        title="Windows Taskbar"
+    ></iframe>
+
+
+    <!-- ==========================================
+         CONTROLE DOS PROGRAMAS
+         ========================================== -->
     <script>
-        if (localStorage.getItem('logado') !== 'true') {
-            window.location.href = 'lo.html';
+
+    function abrirPrograma(caminho, id) {
+
+        const container =
+            document.getElementById(
+                "programas-container"
+            );
+
+
+        if (!container) {
+
+            console.error(
+                "Container de programas não encontrado."
+            );
+
+            return;
+
         }
-    </script>
 
-    <!-- ===== BOLHAS DE FUNDO ===== -->
-    <div class="bolhas-imagem">
-        <img src="assets/icones/Bubles.png" class="bubble b1">
-        <img src="assets/icones/Bubles.png" class="bubble b2">
-        <img src="assets/icones/Bubles.png" class="bubble b3">
-        <img src="assets/icones/Bubles.png" class="bubble b4">
-        <img src="assets/icones/Bubles.png" class="bubble b5">
-        <img src="assets/icones/Bubles.png" class="bubble b6">
-        <img src="assets/icones/Bubles.png" class="bubble b7">
-        <img src="assets/icones/Bubles.png" class="bubble b8">
-        <img src="assets/icones/Bubles.png" class="bubble b9">
-        <img src="assets/icones/Bubles.png" class="bubble b10">
-    </div>
 
-    <!-- ===== JANELA PRINCIPAL ===== -->
-    <div class="janela" id="janelaPrincipal">
+        let programa =
+            document.getElementById(id);
 
-        <!-- BARRA DE TÍTULO -->
-        <div class="barra">
-            <div class="titulo">
-                <img src="assets/icones/iconeverde.png" class="icone-titulo"> 
-                <span id="saudacao">Gabriel Taveira</span>
-            </div>
-            <div class="botoes">
-                <button class="min">─</button>
-                <button class="max">□</button>
-                <button class="close">✕</button>
-            </div>
-        </div>
 
-        <!-- MENU -->
-        <div class="menu">
-            <button class="menu-btn"><img src="assets/icones/files.png" class="icone-files" alt="files"> Calendário</button>
-            <button class="menu-btn">✏️ Edit</button>
-            <button class="menu-btn">👁️ View</button>
-            <button class="menu-btn">⭐ Favorites</button>
-            <a href="tools.html" class="menu-btn" style="text-decoration:none;">🛠️ Tools</a>
-            <button class="menu-btn">❓ Help</button>
-            
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="🔍 Pesquisar...">
-                <button class="search-btn">🔍</button>
-            </div>
-        </div>
+        /*
+         * PROGRAMA JÁ ABERTO
+         */
+        if (programa) {
 
-        <!-- ===== CONTEÚDO ===== -->
-        <div class="conteudo" id="conteudoPrincipal">
+            programa.style.display =
+                "block";
 
-            <!-- PERFIL -->
-            <div class="perfil" id="perfilContainer">
-                <img id="fotoPerfil" src="assets/icones/Sem título - 17 de julho de 2026 às 17.46.02.png" class="foto-perfil">
-                <div class="info-perfil">
-                    <h1 id="nomePerfil">Gabrielzinho!</h1>
-                    <p id="subtituloPerfil">Bem-vindo ao meu mundo! <img src="assets/icones/pika.gif" alt="GIF animado" style="width: 25px; height: 25px; vertical-align: middle;"></p>
-                    <p class="descricao" id="descricaoPerfil">🌊 Frutiger Aero • HAMONZINHO • Y2K</p>
-                    
-                    <!-- LINKS SOCIAIS DO USUÁRIO -->
-                    <div class="social-links-usuario" id="socialLinks">
-                        <!-- Preenchido pelo JavaScript -->
-                    </div>
-                </div>
-            </div>
+            return;
 
-            <!-- ===== CAIXAS DE DIÁLOGO ===== -->
-<div style="width:100%; margin: 15px 0;">
-<!--rgba(255,255,255,0.03)-->
-    <!-- CAIXA 1: BOAS-VINDAS -->
-    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(0, 128, 255, 0.449); border-radius: 12px; padding: 0; margin-bottom: 18px; overflow: hidden;">
-        <div style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; background: linear-gradient(145deg, rgb(10, 85, 197), rgb(8, 195, 158));
-    border-radius: 12px;
-    padding: 20px;; border-bottom: 1px solid rgba(235, 6, 6, 0.04); font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.7);">
-            <span style="font-size: 18px;"></span>
-            <span style="flex:1; letter-spacing: 0.3px;">Home Page</span>
-        </div>
-        <div style="padding: 16px 18px 18px; color: rgba(255,255,255,0.80); font-size: 14px; line-height: 1.6;">
-            <h2 style="color: rgba(255,255,255,0.95); font-size: 22px; font-weight: 300; margin: 0 0 8px 0;"> OII!!! <img src="assets/icones/pokemon-cleffa.gif" alt="GIF animado" style="width: 25px; height: 25px; vertical-align: middle;"></span></h2>
-            <p style="margin: 0 0 10px 0;">        
-            Seja muito bem-vindo(a) ao meu  WebSite, o meu cantinho na internet! Este é um espaço onde compartilho um pouco sobre mim, meus projetos, meus hobbies e tudo aquilo que faz parte do meu mundo. O site foi inspirado na estética Frutiger Aero, trazendo aquele clima nostálgico dos anos 2000 com efeitos de vidro, paisagens, céu azul e uma atmosfera tranquila.
-            Fique à vontade para explorar cada página, ouvir a música ambiente e conhecer um pouco mais sobre mim. Espero que sua visita seja agradável e que você aproveite essa experiência. Obrigado por passar por aqui! 💙☁️           </p>
-        </div>
-    </div>
+        }
 
-    <!-- ===== BOX DE UPDATES ===== -->
-<div style="
-    background: rgba(0, 20, 40, 0.4);  /* Fundo mais escuro (azul escuro translúcido) */
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    padding: 0;
-    margin-bottom: 18px;
-    overflow: hidden;
-">
-    <!-- CABEÇALHO -->
-    <div style="
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 18px;
-        background: rgba(255, 255, 255, 0.03);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        font-size: 14px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.7);
-    ">
-        <span style="font-size: 18px;"> <img src="assets/icones/news.gif" alt="GIF animado" style="width: 25px; height: 25px; vertical-align: middle;"></span>
-        <span style="flex:1; letter-spacing: 0.3px;">Updates / Changelog</span>
-        <span style="
-            background: rgba(0, 200, 255, 0.12);
-            color: rgba(0, 200, 255, 0.7);
-            font-size: 10px;
-            padding: 2px 10px;
-            border-radius: 12px;
-        ">📌 NOVO</span>
-    </div>
 
-    <!-- ===== CORPO COM SCROLL ===== -->
-    <div style="
-        padding: 16px 18px 18px;
-        max-height: 250px;          /* ALTURA MÁXIMA - QUANDO PASSAR, APARECE SCROLL */
-        overflow-y: auto;           /* ATIVA O SCROLL VERTICAL */
-        scroll-behavior: smooth;    /* ROLAGEM SUAVE */
-    ">
+        /*
+         * CRIA O PROGRAMA
+         */
 
-        <!-- ===== UPDATE 1 ===== -->
-        <div style="
-            margin-bottom: 14px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        ">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                <span style="
-                    background: rgba(0, 200, 255, 0.08);
-                    color: rgba(0, 200, 255, 0.6);
-                    font-size: 10px;
-                    padding: 1px 10px;
-                    border-radius: 10px;
-                    font-weight: 600;
-                ">NOVO</span>
-                <span style="
-                    color: rgba(255, 255, 255, 0.3);
-                    font-size: 12px;
-                ">18/07/2026</span>
-            </div>
-            <p style="
-                margin: 0;
-                color: rgba(255, 255, 255, 0.75);
-                font-size: 14px;
-                line-height: 1.5;
-            ">
-                📌 Adicionei uma nova seção de <strong>Updates</strong> na página!
-            </p>
-        </div>
+        programa =
+            document.createElement(
+                "iframe"
+            );
 
-        <!-- ===== UPDATE 2 ===== -->
-        <div style="
-            margin-bottom: 14px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        ">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                <span style="
-                    background: rgba(255, 200, 0, 0.08);
-                    color: rgba(255, 200, 0, 0.6);
-                    font-size: 10px;
-                    padding: 1px 10px;
-                    border-radius: 10px;
-                    font-weight: 600;
-                ">ATUALIZAÇÃO</span>
-                <span style="
-                    color: rgba(255, 255, 255, 0.3);
-                    font-size: 12px;
-                ">15/07/2026</span>
-            </div>
-            <p style="
-                margin: 0;
-                color: rgba(255, 255, 255, 0.75);
-                font-size: 14px;
-                line-height: 1.5;
-            ">
-                🎨 Melhorei o design da página com novas cores Frutiger Aero!
-            </p>
-        </div>
 
-        <!-- ===== UPDATE 3 ===== -->
-        <div style="
-            margin-bottom: 14px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        ">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                <span style="
-                    background: rgba(100, 200, 100, 0.08);
-                    color: rgba(100, 200, 100, 0.6);
-                    font-size: 10px;
-                    padding: 1px 10px;
-                    border-radius: 10px;
-                    font-weight: 600;
-                ">CORRIGIDO</span>
-                <span style="
-                    color: rgba(255, 255, 255, 0.3);
-                    font-size: 12px;
-                ">12/07/2026</span>
-            </div>
-            <p style="
-                margin: 0;
-                color: rgba(255, 255, 255, 0.75);
-                font-size: 14px;
-                line-height: 1.5;
-            ">
-                🐛 Corrigi o bug do player de música que não carregava no login.
-            </p>
-        </div>
+        programa.src =
+            caminho;
 
-        <!-- ===== UPDATE 4 ===== -->
-        <div style="
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        ">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                <span style="
-                    background: rgba(200, 100, 255, 0.08);
-                    color: rgba(200, 100, 255, 0.6);
-                    font-size: 10px;
-                    padding: 1px 10px;
-                    border-radius: 10px;
-                    font-weight: 600;
-                ">NOVO</span>
-                <span style="
-                    color: rgba(255, 255, 255, 0.3);
-                    font-size: 12px;
-                ">10/07/2026</span>
-            </div>
-            <p style="
-                margin: 0;
-                color: rgba(255, 255, 255, 0.75);
-                font-size: 14px;
-                line-height: 1.5;
-            ">
-                🎵 Adicionei música ambiente com controle de volume!
-            </p>
-        </div>
 
-    </div>
-    <!-- FIM DO SCROLL -->
+        programa.id =
+            id;
 
-</div>  
 
-    <!-- CAIXA 3: LINKS / ETIQUETAS -->
-    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 0; margin-bottom: 18px; overflow: hidden;">
-        <div style="padding: 14px 18px;">
-            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); padding: 4px 14px; border-radius: 16px; font-size: 12px;">KORBY</span>
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); padding: 4px 14px; border-radius: 16px; font-size: 12px;">KISIGNEW</span>
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); padding: 4px 14px; border-radius: 16px; font-size: 12px;">malune</span>
-                <span style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); padding: 4px 14px; border-radius: 16px; font-size: 12px;">00s</span>
-            </div>
-        </div>
-    </div>
+        programa.className =
+            "programa-popup";
 
-</div>
 
-            <!-- CAIXA 2: MICROBLOG / UPDATES -->
-            <div class="caixa-dialogo">
-                <div class="caixa-header">
-                    <span class="caixa-icone">📰</span>
-                    <span class="caixa-titulo">Microblog / Updates</span>
-                    <span class="caixa-badge">RSS</span>
-                </div>
-                <div class="caixa-corpo">
-                    <p>
-                        <strong>terrariums</strong> and look at mine in the new Terrariums page. 
-                        I've wanted to make a page about this for a very long time.
-                    </p>
-                    <hr class="caixa-divisor">
-                    <p>
-                        <span class="caixa-data">28/02/2026</span> - 
-                        teste
-                    </p>
-                </div>
-            </div>
+        programa.title =
+            id;
 
-            <!-- CAIXA 3: LINKS / ETIQUETAS -->
-            <div class="caixa-dialogo caixa-links">
-                <div class="caixa-corpo">
-                    <div class="etiquetas">
-                        <span class="etiqueta">KORBY</span>
-                        <span class="etiqueta">KISIGNEW</span>
-                        <span class="etiqueta">malune</span>
-                        <span class="etiqueta">00s</span>
-                    </div>
-                </div>
-            </div>
 
-            <!-- CONTEÚDO EXTRA -->
-            <div class="conteudo-extra">
-                
-                
-                <!-- REDES SOCIAIS -->
-                <div class="social-icons">
-                    <a href="https://www.tiktok.com/@gabrieltaveira1" target="_blank" class="social-link" id="linkTiktok">
-                        <img src="assets/icones/tiktok.png" class="icone-social" alt="TikTok">
-                        <span>TikTok</span>
-                    </a>
+        programa.setAttribute(
+            "allowtransparency",
+            "true"
+        );
 
-                    <a href="https://www.instagram.com/gabriel_taveira12/" target="_blank" class="social-link" id="linkInstagram">
-                        <img src="assets/icones/instagram.png" class="icone-social" alt="Instagram">
-                        <span>Instagram</span>
-                    </a>
-                     
-                    <a href="https://www.linkedin.com/in/gabriel-taveira12" target="_blank" class="social-link" id="linkLinkedin">
-                        <img src="assets/icones/LinkedIn.png" class="icone-social" alt="LinkedIn">
-                        <span>LinkedIn</span>
-                    </a>
 
-                    <!-- DISCORD -->
-                    <div class="discord-wrapper" id="discordWrapper">
-                        <a href="#" class="social-link discord-link" id="discordBtn">
-                            <img src="assets/icones/discord2.png" class="icone-social" alt="Discord">
-                            <span>Discord</span>
-                        </a>
-                        <div class="discord-popup" id="discordPopup">
-                            <div class="discord-popup-content">
-                                <span class="discord-icone">🎮</span>
-                                <span class="discord-nome" id="discordNome">@Hamonzinho12</span>
-                            </div>
-                            <button class="fechar-popup" id="fecharPopup">✕</button>
-                        </div>
-                    </div>
-                </div>
+        container.appendChild(
+            programa
+        );
 
-                <!-- PLAYER DE MÚSICA -->
-                <div class="player-musica">
-                    <span class="musica-info">
-                        <img src="assets/icones/music.png" class="icone-titulo" alt="Música"> 
-                        Música Ambiente
-                    </span>
-                    <div class="volume-wrapper">
-                        <button class="btn-play" id="playPauseBtn">⏸️</button>
-                        <div class="volume-popup">
-                            <input type="range" id="volumeControl" 
-                                   min="0" max="1" step="0.01" value="0.03" 
-                                   class="volume-slider-horizontal">
-                            <span class="volume-label" id="volumeLabel">3%</span>
-                        </div>
-                    </div>
-                </div>
+    }
 
-                <!-- RODAPÉ -->
-                <div class="rodape">
-                    <span>⏰ <span id="horaAtual">18:08</span></span>
-                    <span>📅 <span id="dataAtual">17/07/2026</span></span>
-                    <button id="logoutBtn" class="logout-btn">🚪 Sair</button>
-                </div>
 
-            </div>
-            <!-- FIM CONTEÚDO EXTRA -->
 
-        </div>
-        <!-- FIM CONTEÚDO -->
+    /*
+     * ESCUTA A TASKBAR
+     */
 
-    </div>
-    <!-- FIM JANELA -->
+    window.addEventListener(
+    "message",
+    function (event) {
 
-    <!-- ===== ÁUDIO ===== -->
-    <audio id="musicaAmbiente" loop>
-        <source src="assets/social-media-phone-icons/Musicas/musica.mp3" type="audio/mpeg">
-    </audio>
+        const dados = event.data;
 
-    <!-- ===== JAVASCRIPT ===== -->
-    <script src="assets/scripts/script.js"></script>
+        if (!dados) {
+            return;
+        }
+
+
+        /* ABRIR PROGRAMA */
+
+        if (dados.tipo === "abrirPrograma") {
+
+            abrirPrograma(
+                dados.caminho,
+                dados.id
+            );
+
+        }
+
+
+        /* FECHAR PROGRAMA */
+
+        if (dados.tipo === "fecharPrograma") {
+
+            /*
+             * Descobre qual iframe enviou
+             * indiretamente a mensagem.
+             *
+             * Por enquanto, como temos apenas
+             * o Gabrielzinho, fechamos ele.
+             */
+
+            const programa =
+                document.getElementById(
+                    "programaGabrielzinho"
+                );
+
+            if (programa) {
+                programa.remove();
+            }
+
+        }
+
+    }
+);
+
+</script>
+
+
 
 </body>
+
 </html>
