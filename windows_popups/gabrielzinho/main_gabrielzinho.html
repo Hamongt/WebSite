@@ -15,6 +15,10 @@
     rel="stylesheet"
     href="../../assets/css/gabrielzinho.css"
 >
+<link
+    rel="stylesheet"
+    href="css/estilos.css"
+>
 
 
 <!-- =========================================================
@@ -55,139 +59,169 @@
         id="conteudoPrincipal"
     >
 
-
         <!-- =================================================
-             SEÇÃO DE PERFIL
-             Foto, nome, saudação, descrição e links sociais
+             ÁREA NAVEGÁVEL INTERNA DO GABRIELZINHO
+             Somente este bloco muda entre Home/Postagens/etc.
              ================================================= -->
-        <div
-            class="perfil"
-            id="perfilContainer"
-        >
+        <div id="paginaGabrielzinho">
 
-            <!-- FOTO DE PERFIL -->
-            <img
-                id="fotoPerfil"
-                src="../../assets/images/me.png"
-                class="foto-perfil"
+            <!-- =================================================
+                 SEÇÃO DE PERFIL
+                 ================================================= -->
+            <section
+                class="secao-home secao-perfil"
+                id="secaoPerfil"
             >
-
-
-            <!-- INFORMAÇÕES DO PERFIL -->
-            <div class="info-perfil">
-
-                <!-- NOME DO PERFIL -->
-                <h1 id="nomePerfil">
-                    Gabrielzinho!
-                </h1>
-
-                <!-- SUBTÍTULO / SAUDAÇÃO -->
-                <p id="subtituloPerfil">
-                    Bem-vindo ao meu mundo!
-
-                    <img
-                        src="../../assets/icones/pika.gif"
-                        alt="GIF animado"
-                        style="
-                            width:25px;
-                            height:25px;
-                            vertical-align:middle;
-                        "
-                    >
-                </p>
-
-                <!-- DESCRIÇÃO CURTA -->
-                <p
-                    class="descricao"
-                    id="descricaoPerfil"
-                >
-                    🌊 Frutiger Aero • HAMONZINHO • Y2K
-                </p>
-
-                <!--
-                    LINKS SOCIAIS DINÂMICOS
-                    O JavaScript pode preencher este bloco
-                    com links configurados para o usuário
-                -->
                 <div
-                    class="social-links-usuario"
-                    id="socialLinks"
-                ></div>
+                    class="perfil"
+                    id="perfilContainer"
+                >
+                    <img
+                        id="fotoPerfil"
+                        src="../../assets/images/me.png"
+                        class="foto-perfil"
+                    >
 
-            </div>
+                    <div class="info-perfil">
+
+                        <h1 id="nomePerfil">
+                            Gabrielzinho!
+                        </h1>
+
+                        <p id="subtituloPerfil">
+                            Bem-vindo ao meu mundo!
+
+                            <img
+                                src="../../assets/icones/pika.gif"
+                                alt="GIF animado"
+                                style="
+                                    width:25px;
+                                    height:25px;
+                                    vertical-align:middle;
+                                "
+                            >
+                        </p>
+
+                        <p
+                            class="descricao"
+                            id="descricaoPerfil"
+                        >
+                            <img src="../../assets/images/cute-pink.gif" alt="GIF" style="width: 25px; height: 25px; vertical-align: middle;"> 
+                            <span class="frutiger">
+                                Frutiger Aero
+                            </span>
+                            • HAMONZINHO • Y2K
+                        </p>
+
+                        <div
+                            class="social-links-usuario"
+                            id="socialLinks"
+                        ></div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- =================================================
+                 CAIXA DE BOAS-VINDAS
+                 Esta caixa termina completamente antes dos Updates
+                 ================================================= -->
+            <section
+                class="secao-home secao-welcome"
+                id="secaoWelcome"
+            >
+                <div class="caixa-boas-vindas">
+
+                    <div class="header">
+
+                        <span style="font-size: 18px;">
+                            <img
+                                src="../../assets/icones/feliz.gif"
+                                alt="GIF"
+                                style="
+                                    width:25px;
+                                    height:25px;
+                                    vertical-align:middle;
+                                "
+                            >
+                        </span>
+
+                        <span>
+                            Home Page
+                        </span>
+
+                    </div>
+
+
+                    <div class="corpo">
+
+                        <h2>
+                            OII!!!
+
+                            <img
+                                src="../../assets/images/pokemon-cleffa.gif"
+                                alt="GIF"
+                                style="
+                                    width:25px;
+                                    height:25px;
+                                    vertical-align:middle;
+                                "
+                            >
+                        </h2>
+
+
+                        <p>
+                            Seja muito bem-vindo(a) ao meu WebSite, o meu cantinho na internet!
+                            Este é um espaço onde compartilho um pouco sobre mim, meus projetos,
+                            meus hobbies e tudo aquilo que faz parte do meu mundo. O site foi
+                            inspirado na estética Frutiger Aero, trazendo aquele clima nostálgico
+                            dos anos 2000 com efeitos de vidro, paisagens, céu azul e uma atmosfera
+                            tranquila. Fique à vontade para explorar cada página, ouvir a música
+                            ambiente e conhecer um pouco mais sobre mim. Espero que sua visita seja
+                            agradável e que você aproveite essa experiência. Obrigado por passar
+                            por aqui! 💙☁️
+                        </p>
+
+
+                        <div class="imagem-boas-vindas">
+
+                            <img
+                                src="../../assets/images/bem.gif"
+                                alt="Welcome Home"
+                                style="
+                                    width:190px;
+                                    height:90px;
+                                    display:block;
+                                    margin:0 auto;
+                                "
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- =================================================
+                 SEÇÃO DE UPDATES / CHANGELOG
+                 É uma seção independente da caixa de boas-vindas.
+                 updates.html será inserido SOMENTE neste container.
+                 ================================================= -->
+            <section
+                class="secao-home secao-updates"
+                id="secaoUpdates"
+            >
+                <div
+                    id="updates-container"
+                    class="updates-container"
+                ></div>
+            </section>
 
         </div>
 
-
-        <!-- =================================================
-             SEÇÃO DE BOAS-VINDAS / HOME PAGE
-             Caixa principal de apresentação do site
-             ================================================= -->
-        <div class="caixa-boas-vindas">
-
-            <!-- CABEÇALHO DA CAIXA -->
-            <div class="header">
-
-                <span style="font-size: 18px;"><img src="../../assets/icones/feliz.gif" alt="GIF" style="width: 25px; height: 25px; vertical-align: middle;"></span>
-
-                <span>
-                    Home Page
-                </span>
-
-            </div>
-
-
-            <!-- CORPO DA CAIXA -->
-            <div class="corpo">
-
-                <!-- TÍTULO DA BOAS-VINDAS -->
-                <h2>
-                    OII!!!
-
-                    <img
-                        src="../../assets/images/pokemon-cleffa.gif"
-                        alt="GIF"
-                        style="
-                            width: 25px;
-                            height: 25px;
-                            vertical-align: middle;
-                        "
-                    >
-                </h2>
-
-
-                <!-- TEXTO DE APRESENTAÇÃO -->
-                <p>
-                    Seja muito bem-vindo(a) ao meu WebSite, o meu cantinho na internet!
-                    Este é um espaço onde compartilho um pouco sobre mim, meus projetos,
-                    meus hobbies e tudo aquilo que faz parte do meu mundo. O site foi
-                    inspirado na estética Frutiger Aero, trazendo aquele clima nostálgico
-                    dos anos 2000 com efeitos de vidro, paisagens, céu azul e uma atmosfera
-                    tranquila. Fique à vontade para explorar cada página, ouvir a música
-                    ambiente e conhecer um pouco mais sobre mim. Espero que sua visita seja
-                    agradável e que você aproveite essa experiência. Obrigado por passar
-                    por aqui! 💙☁️
-                </p>
-                <!-- IMAGEM DE BOAS-VINDAS -->
-                <div class="imagem-boas-vindas">
-                    <img
-                        src="../../assets/images/bem.gif"
-                        alt="Welcome Home"
-                        style="
-                            width:190px;
-                            height:90px;
-                            display:block;
-                            margin:0 auto;
-                        "
-                    >
-                </div>
-            </div>
-
-    <!-- =================================================
-    SEÇÃO DE UPDATES / CHANGELOG
-    O conteúdo vem do arquivo updates.html
-    ================================================= -->
-    <div id="updates-container"></div>
 
 
         <!-- =================================================
@@ -271,75 +305,18 @@
 
             </div>
 
-
             <!-- =================================================
                  PLAYER DE MÚSICA
-                 Botão Play/Pause e controle de volume
+                 Carregado de player_musica.html pelo gabrielzinho.js
                  ================================================= -->
-            <div class="player-musica">
+            <div id="playerMusicaContainer"></div>
 
 
-                <!-- NOME / IDENTIFICAÇÃO DO PLAYER -->
-                <span class="musica-info">
-
-                    <img
-                        src="../../assets/icones/music.png"
-                        class="icone-titulo"
-                    >
-
-                    Música Ambiente
-
-                </span>
-
-
-                <!-- CONTROLES DO PLAYER -->
-                <div class="volume-wrapper">
-
-
-                    <!-- BOTÃO PLAY / PAUSE -->
-                    <button
-                        class="btn-play"
-                        id="playPauseBtn"
-                    >
-                        ⏸️
-                    </button>
-
-
-                    <!-- POPUP DE VOLUME -->
-                    <div class="volume-popup">
-
-
-                        <!-- SLIDER DE VOLUME -->
-                        <input
-                            type="range"
-                            id="volumeControl"
-                            min="0"
-                            max="1"
-                            step="0.01"
-                            value="0.03"
-                            class="volume-slider-horizontal"
-                        >
-
-
-                        <!-- PORCENTAGEM DO VOLUME -->
-                        <span
-                            class="volume-label"
-                            id="volumeLabel"
-                        >
-                            3%
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
 
 
             <!-- =================================================
                  RODAPÉ / LOGOUT
                  Será carregado dinamicamente via fetch()
-                 Aqui ficam relógio, data e botão Sair
                  ================================================= -->
             <div
                 id="logoutProgram"
@@ -351,22 +328,6 @@
     </div>
 
 </div>
-
-
-<!-- =========================================================
-     ÁUDIO DE FUNDO
-     Elemento usado pelo player de música
-     ========================================================= -->
-<audio
-    id="musicaAmbiente"
-    loop
->
-    <source
-        src="../../assets/social-media-phone-icons/Musicas/musica.mp3"
-        type="audio/mpeg"
-    >
-</audio>
-
 
 <!-- =========================================================
      CARREGAMENTO DOS COMPONENTES DA JANELA

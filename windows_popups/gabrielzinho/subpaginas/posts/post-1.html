@@ -1,0 +1,72 @@
+<!-- ==========================================
+   📝 POST 1 - COM INTERAÇÕES
+   ========================================== -->
+
+<!-- ===== CABEÇALHO ===== -->
+<div class="post-header">
+    <div class="post-autor">
+        <img src="../../../../../assets/images/me.png" alt="Autor">
+        <div>
+            <div class="nome">Gabriel Taveira</div>
+            <div class="data">18/07/2026</div>
+        </div>
+    </div>
+    <span class="post-tag">📌 DESTAQUE</span>
+</div>
+
+<!-- ===== CONTEÚDO ===== -->
+<div class="post-conteudo">
+    <h3>Meu primeiro post! <img src="../../assets/icones/feliz.gif" alt="GIF" style="width: 25px; height: 25px; vertical-align: middle;border: none;"></h3>
+    <p>
+        Este é o meu primeiro post aqui no meu site! 
+        Estou muito feliz em compartilhar minhas ideias 
+        e pensamentos com vocês. 
+    </p>
+    <img src="../../assets/icones/dudu-cute.gif" alt="Frutiger Aero" class="img-pequena"  style="
+        display:block;
+        margin:0 auto;
+        border: none;">
+    <p>
+        Este espaço é dedicado a tudo que eu amo: 
+        música, design, tecnologia, trabalhos e a estética Frutiger Aero. 
+        Fiquem à vontade para explorar e a interagir com os conteúdos criados aqui por mim mesmo !
+    </p>
+</div>
+
+<!-- ===== RODAPÉ COM INTERAÇÕES ===== -->
+<div class="post-footer">
+    
+    <!-- ===== CURTIR ===== -->
+    <span class="interacao curtir" data-post="post-1">
+        <span class="icone">❤️</span>
+        <span class="contador" id="curtidas-post-1">0</span>
+    </span>
+
+    <!-- ===== COMENTAR ===== -->
+    <span class="interacao comentar" data-post="post-1">
+        <span class="icone">💬</span>
+        <span class="contador" id="comentarios-post-1">0</span>
+    </span>
+
+    <!-- ===== COMPARTILHAR ===== -->
+    <span class="interacao compartilhar" onclick="copiarLink()">
+        <span class="icone">🔗</span>
+        <span>Compartilhar</span>
+    </span>
+
+</div>
+
+<!-- ===== CAIXA DE COMENTÁRIOS (mini) ===== -->
+<div class="comentario-box" id="comentarioBox-post-1" style="display: none;">
+    <div class="comentario-header">
+        <span>💬 Comentários</span>
+        <button class="fechar-comentario" onclick="fecharComentarios('post-1')">✕</button>
+    </div>
+    <div class="comentario-lista" id="listaComentarios-post-1">
+        <p class="sem-comentarios">Nenhum comentário ainda. Seja o primeiro!</p>
+    </div>
+    <div class="comentario-input-area">
+        <input type="text" class="comentario-input" id="inputComentario-post-1" placeholder="Escreva um comentário...">
+        <button class="enviar-comentario" onclick="adicionarComentario('post-1')">Enviar</button>
+    </div>
+</div>

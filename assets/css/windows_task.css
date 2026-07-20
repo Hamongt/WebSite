@@ -160,3 +160,35 @@
 .taskbar-program:active {
     transform: scale(0.95);
 }
+
+/* ==========================================
+   RELÓGIO DA TASKBAR
+   ========================================== */
+
+.windows-taskbar-clock {
+    margin-left: auto;
+
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 18px;
+
+    color: white;
+
+    font-family: "Segoe UI", sans-serif;
+    font-size: 13px;
+
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.8);
+
+    border-left:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    background:
+        rgba(255, 255, 255, 0.03);
+
+    user-select: none;
+}

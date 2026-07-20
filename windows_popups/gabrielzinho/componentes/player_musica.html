@@ -1,0 +1,57 @@
+<!-- =========================================================
+     PLAYER DE MÚSICA DO GABRIELZINHO
+     Componente reutilizado pela Home e pela página de postagens.
+     A lógica fica em: assets/scripts/gabrielzinho.js
+     ========================================================= -->
+
+<div class="player-musica">
+    <span class="musica-info">
+        <img
+            src="../../assets/icones/music.png"
+            class="icone-titulo"
+            alt="Música"
+        >
+        Música Ambiente
+    </span>
+
+    <div class="volume-wrapper">
+        <button
+            class="btn-play"
+            id="playPauseBtn"
+            type="button"
+            aria-label="Tocar ou pausar música"
+        >
+            ▶️
+        </button>
+
+        <div class="volume-popup">
+            <input
+                type="range"
+                id="volumeControl"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.03"
+                class="volume-slider-horizontal"
+                aria-label="Volume"
+            >
+            <span
+                class="volume-label"
+                id="volumeLabel"
+            >
+                3%
+            </span>
+        </div>
+    </div>
+</div>
+
+<audio
+    id="musicaAmbiente"
+    loop
+    preload="metadata"
+>
+    <source
+        src="../../assets/social-media-phone-icons/Musicas/musica.mp3"
+        type="audio/mpeg"
+    >
+</audio>

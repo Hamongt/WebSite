@@ -1,0 +1,46 @@
+
+/* ==========================================
+   EFEITO FRUTIGER AERO
+   ========================================== */
+
+.frutiger{
+    font-size:15px;
+    font-weight:bold;
+
+    background:linear-gradient(
+        100deg,
+        #6be5ff,
+        #4cffb0,
+        #8fff6d,
+        #fff86d,
+        #ffb36b,
+        #ff7ed9,
+        #7ba9ff,
+        #6be5ff
+    );
+
+    background-size:500%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:aeroRainbow 8s linear infinite;
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,.6),
+        0 0 12px rgba(0,200,255,.5),
+        0 0 20px rgba(0,255,200,.3);
+}
+
+
+@keyframes aeroRainbow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    100% {
+        background-position:500% 50%;
+    }
+
+}

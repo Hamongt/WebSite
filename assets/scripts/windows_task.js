@@ -56,3 +56,59 @@ function iniciarWindowsTaskbar() {
     });
 
 }
+
+// ==========================================
+// RELÓGIO DA TASKBAR
+// ==========================================
+
+function iniciarRelogioTaskbar() {
+
+    const relogio =
+        document.getElementById(
+            "windowsTaskbarClock"
+        );
+
+    if (!relogio) {
+        console.warn(
+            "Relógio da taskbar não encontrado."
+        );
+
+        return;
+    }
+
+
+    // Atualiza o horário exibido
+    function atualizarHorario() {
+
+        const agora =
+            new Date();
+
+        const horas =
+            String(
+                agora.getHours()
+            ).padStart(2, "0");
+
+        const minutos =
+            String(
+                agora.getMinutes()
+            ).padStart(2, "0");
+
+
+        relogio.textContent =
+            `${horas}:${minutos}`;
+
+    }
+
+
+    // Mostra imediatamente
+    atualizarHorario();
+
+
+    // Atualiza automaticamente
+    // a cada segundo
+    setInterval(
+        atualizarHorario,
+        1000
+    );
+
+}
