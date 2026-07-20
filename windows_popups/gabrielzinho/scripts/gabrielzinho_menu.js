@@ -31,3 +31,55 @@ document.addEventListener("mouseout", function (event) {
 
     icone.src = "assets/icones/posts.png";
 });
+
+
+// ============================================================
+// DROPDOWN FAVORITOS
+// ============================================================
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const botao =
+            event.target.closest(
+                "#favoritosLink"
+            );
+
+        const dropdown =
+            document.querySelector(
+                ".dropdown-menu"
+            );
+
+
+        if (!dropdown) {
+            return;
+        }
+
+
+        if (botao) {
+
+            event.preventDefault();
+
+            dropdown.classList.toggle(
+                "ativo"
+            );
+
+            return;
+        }
+
+
+        if (
+            !event.target.closest(
+                ".menu-dropdown"
+            )
+        ) {
+
+            dropdown.classList.remove(
+                "ativo"
+            );
+
+        }
+
+    }
+);

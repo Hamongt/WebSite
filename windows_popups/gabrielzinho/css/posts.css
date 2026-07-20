@@ -55,38 +55,6 @@
 
 
 /* ============================================================
-   BOTÃO VOLTAR
-   ============================================================ */
-
-.btn-voltar-subpagina {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    padding: 7px 14px;
-
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-
-    color: rgba(255, 255, 255, 0.7);
-
-    font-family: "Segoe UI", sans-serif;
-    font-size: 13px;
-
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-.btn-voltar-subpagina:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: white;
-    transform: translateX(-2px);
-}
-
-
-/* ============================================================
    CONTAINER DE POSTS
    ============================================================ */
 

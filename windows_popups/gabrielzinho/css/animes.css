@@ -1,0 +1,583 @@
+/* ============================================================
+   🌸 ANIME.CSS - ESTILOS COMPLETOS (IGUAL AOS POSTS)
+   ============================================================ */
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.animes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 5px 0;
+    width: 100%;
+}
+
+/* ============================================================
+   BOLHA DO POST (IGUAL AOS POSTS)
+   ============================================================ */
+.anime-item {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 12px !important;
+    padding: 16px 18px !important;
+    transition: all 0.3s ease !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.anime-item:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(200, 100, 255, 0.08) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 20px rgba(200, 100, 255, 0.03) !important;
+}
+
+/* ============================================================
+   CABEÇALHO DO POST (FOTO + NOME + DATA)
+   ============================================================ */
+.anime-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 10px !important;
+}
+
+.anime-autor {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+/* ===== FOTO DE PERFIL ===== */
+.anime-autor img {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.anime-autor .nome {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+
+.anime-autor .data {
+    color: rgba(255, 255, 255, 0.3) !important;
+    font-size: 12px !important;
+}
+
+/* ===== TAG DO ANIME ===== */
+.anime-tag {
+    background: rgba(200, 100, 255, 0.08) !important;
+    color: rgba(200, 100, 255, 0.6) !important;
+    font-size: 10px !important;
+    padding: 2px 10px !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+}
+
+/* ============================================================
+   CONTEÚDO DO POST
+   ============================================================ */
+.anime-conteudo {
+    color: rgba(255, 255, 255, 0.80) !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+
+.anime-conteudo h3 {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    margin: 0 0 8px 0 !important;
+}
+
+.anime-conteudo p {
+    margin: 0 0 10px 0 !important;
+}
+
+.anime-conteudo p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* ============================================================
+   IMAGENS DO POST
+   ============================================================ */
+.anime-conteudo img {
+    max-width: 100% !important;
+    border-radius: 8px !important;
+    margin: 8px 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.img-pequena {
+    width: 80px !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    border: none !important;
+    display: block !important;
+    margin: 8px 0 !important;
+}
+
+.img-media {
+    width: 150px !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    border: none !important;
+    display: block !important;
+    margin: 8px 0 !important;
+}
+
+.img-grande {
+    width: 250px !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    border: none !important;
+    display: block !important;
+    margin: 8px 0 !important;
+}
+
+.img-gigante {
+    width: 100% !important;
+    max-height: 300px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    border: none !important;
+    display: block !important;
+    margin: 8px 0 !important;
+}
+
+.img-com-borda {
+    border: 2px solid rgba(200, 100, 255, 0.15) !important;
+    padding: 4px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.img-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* ===== IMAGEM MICRO ===== */
+.img-micro {
+    width: 30px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 4px !important;
+}
+
+/* ===== IMAGEM AO LADO DO TEXTO ===== */
+.img-ao-lado {
+    width: 100px !important;    /* AUMENTE AQUI (era 24px) */
+    height: auto !important;
+    border: none !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin-left: 4px !important;
+}
+/* ============================================================
+   RODAPÉ DO POST (INTERAÇÕES)
+   ============================================================ */
+.anime-footer {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
+    flex-wrap: wrap !important;
+}
+
+.interacao {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: 13px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    padding: 4px 10px !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    user-select: none !important;
+    border: none !important;
+    font-family: inherit !important;
+}
+
+.interacao:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.interacao .icone {
+    font-size: 16px !important;
+}
+
+.interacao .contador {
+    font-weight: 600 !important;
+    min-width: 18px !important;
+    text-align: center !important;
+}
+
+.interacao.curtir.ativo {
+    color: #ff6b6b !important;
+}
+
+.interacao.curtir.ativo .icone {
+    animation: likeAnim 0.4s ease !important;
+}
+
+@keyframes likeAnim {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+/* ============================================================
+   COMENTÁRIOS
+   ============================================================ */
+.comentario-box {
+    background: rgba(0, 20, 40, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    margin-top: 12px !important;
+    width: 100% !important;
+    animation: fadeInUp 0.3s ease !important;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.comentario-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 10px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+
+.fechar-comentario {
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    transition: all 0.3s ease !important;
+}
+
+.fechar-comentario:hover {
+    color: white !important;
+    transform: rotate(90deg) !important;
+}
+
+.comentario-lista {
+    max-height: 150px !important;
+    overflow-y: auto !important;
+    margin-bottom: 10px !important;
+    padding-right: 5px !important;
+}
+
+.comentario-lista::-webkit-scrollbar {
+    width: 4px !important;
+}
+
+.comentario-lista::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-radius: 10px !important;
+}
+
+.comentario-lista::-webkit-scrollbar-thumb {
+    background: rgba(200, 100, 255, 0.2) !important;
+    border-radius: 10px !important;
+}
+
+.sem-comentarios {
+    color: rgba(255, 255, 255, 0.2) !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    padding: 10px 0 !important;
+}
+
+.comentario-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 6px !important;
+    border-left: 2px solid rgba(200, 100, 255, 0.15) !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+.comentario-item:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.comentario-item .autor {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+}
+
+.comentario-item .texto {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 13px !important;
+    margin-top: 2px !important;
+    word-wrap: break-word !important;
+}
+
+.comentario-item .data-comentario {
+    color: rgba(255, 255, 255, 0.2) !important;
+    font-size: 10px !important;
+    margin-top: 2px !important;
+}
+
+.btn-deletar-comentario {
+    position: absolute !important;
+    top: 6px !important;
+    right: 8px !important;
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255, 255, 255, 0.15) !important;
+    cursor: pointer !important;
+    font-size: 13px !important;
+    transition: all 0.3s ease !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    opacity: 0 !important;
+}
+
+.comentario-item:hover .btn-deletar-comentario {
+    opacity: 1 !important;
+}
+
+.btn-deletar-comentario:hover {
+    color: #ff6b6b !important;
+    background: rgba(255, 80, 80, 0.1) !important;
+    transform: scale(1.1) !important;
+}
+
+.comentario-input-area {
+    display: flex !important;
+    gap: 8px !important;
+}
+
+.comentario-input {
+    flex: 1 !important;
+    padding: 8px 12px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 10px !important;
+    color: white !important;
+    font-size: 13px !important;
+    outline: none !important;
+    font-family: 'Segoe UI', sans-serif !important;
+    transition: all 0.3s ease !important;
+}
+
+.comentario-input::placeholder {
+    color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.comentario-input:focus {
+    border-color: rgba(200, 100, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.enviar-comentario {
+    background: rgba(200, 100, 255, 0.1) !important;
+    border: 1px solid rgba(200, 100, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    padding: 8px 16px !important;
+    border-radius: 10px !important;
+    cursor: pointer !important;
+    font-size: 13px !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Segoe UI', sans-serif !important;
+}
+
+.enviar-comentario:hover {
+    background: rgba(200, 100, 255, 0.2) !important;
+    color: white !important;
+}
+
+/* ============================================================
+   BOTÃO VOLTAR
+   ============================================================ */
+.btn-voltar {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    padding: 4px 14px !important;
+    cursor: pointer !important;
+    font-size: 12px !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Segoe UI', sans-serif !important;
+    text-decoration: none !important;
+}
+
+.btn-voltar:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+    transform: scale(1.02) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.btn-voltar:active {
+    transform: scale(0.95) !important;
+}
+
+/* ============================================================
+   CORREÇÃO DO LAYOUT
+   ============================================================ */
+#listaAnimes {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    width: 100% !important;
+}
+
+.fixo {
+    flex-shrink: 0 !important;
+}
+
+/* ============================================================
+   ERRO
+   ============================================================ */
+.erro-anime {
+    padding: 20px !important;
+    border: 1px dashed rgba(255, 100, 100, 0.3) !important;
+    border-radius: 12px !important;
+    color: rgba(255, 150, 150, 0.8) !important;
+    text-align: center !important;
+}
+
+/* ============================================================
+   CARROSSEL INFINITO DE IMAGENS
+   ============================================================ */
+
+.carrossel-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 10px 0;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 8px 0;
+}
+
+.carrossel-track {
+    display: flex;
+    gap: 10px;
+    animation: carrosselAnimacao 20s linear infinite;
+    width: max-content;
+}
+
+.carrossel-track img {
+    width: 35px;
+    height: auto;
+    border: none;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.carrossel-track img:hover {
+    transform: scale(1.3);
+    animation-play-state: paused;
+}
+
+/* Pausa a animação quando o mouse passa por cima */
+.carrossel-container:hover .carrossel-track {
+    animation-play-state: paused;
+}
+
+/* ===== ANIMAÇÃO DO CARROSSEL ===== */
+@keyframes carrosselAnimacao {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===== VERSÃO MAIS RÁPIDA ===== */
+.carrossel-rapido .carrossel-track {
+    animation-duration: 12s;
+}
+
+/* ===== VERSÃO MAIS LENTA ===== */
+.carrossel-lento .carrossel-track {
+    animation-duration: 30s;
+}
+/* ===== VERSÃO maior ===== */
+.carrossel-track img {
+    width: 200px !important;  /* Aumente aqui */
+    height: auto;
+    border: none;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   CARROSSEL - VERSÃO PEQUENA (ícones)
+   ============================================================ */
+
+.carrossel-pequeno .carrossel-track img {
+    width: 35px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 4px !important;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   CARROSSEL - VERSÃO MÉDIA (padrão)
+   ============================================================ */
+
+.carrossel-medio .carrossel-track img {
+    width: 60px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 6px !important;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   CARROSSEL - VERSÃO GRANDE
+   ============================================================ */
+
+.carrossel-grande .carrossel-track img {
+    width: 100px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 8px !important;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   CARROSSEL - VERSÃO GIGANTE
+   ============================================================ */
+
+.carrossel-gigante .carrossel-track img {
+    width: 150px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 10px !important;
+    flex-shrink: 0;
+}
+

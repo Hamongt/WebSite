@@ -90,3 +90,54 @@
     flex-shrink: 0;
     margin-top: 18px;
 }
+
+/* ==========================================
+   DROPDOWN FAVORITOS
+   ========================================== */
+
+.menu-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    min-width: 160px;
+
+    padding: 8px;
+
+    background: rgba(255,255,255,0.95);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.3);
+
+    z-index: 999;
+}
+
+.dropdown-menu.ativo {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-menu a {
+    padding: 7px 12px;
+
+    text-decoration: none;
+
+    color: #333;
+
+    white-space: nowrap;
+
+    border-radius: 5px;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(0,150,255,.2);
+}
