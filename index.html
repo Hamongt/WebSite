@@ -7,90 +7,7 @@
 
     <title>SkyLike Desktop</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-            overflow: hidden;
-
-            /* FUNDO PADRÃO DO DESKTOP */
-            background-image: url("./assets/images/bg/bg.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-
-            font-family: "Segoe UI", sans-serif;
-        }
-
-        /* ==========================================
-           ÁREA ONDE OS PROGRAMAS SERÃO ABERTOS
-           ========================================== */
-        #programas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 48px;
-
-            z-index: 100;
-
-            background: transparent;
-
-            /* O container não bloqueia o desktop */
-            pointer-events: none;
-        }
-
-        /* ==========================================
-           JANELA DE CADA PROGRAMA
-           ========================================== */
-        .programa-popup {
-            position: absolute;
-
-            top: 50%;
-            left: 50%;
-
-            transform: translate(-50%, -50%);
-
-            width: 950px;
-            height: 650px;
-
-            border: none;
-            background: transparent;
-
-            /* O iframe do programa pode receber cliques */
-            pointer-events: auto;
-
-            z-index: 101;
-        }
-
-        /* ==========================================
-           TASKBAR
-           ========================================== */
-        #windowsTask {
-            position: fixed;
-
-            left: 0;
-            bottom: 0;
-
-            width: 100%;
-            height: 70px;
-
-            border: none;
-            background: transparent;
-
-            z-index: 999999;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/principal.css">
 
 </head>
 
@@ -104,138 +21,419 @@
 
     <!-- ==========================================
          TASKBAR
+         O windows_task.html será inserido aqui
+         via fetch()
          ========================================== -->
-    <iframe
-        src="windows_task.html"
-        id="windowsTask"
-        title="Windows Taskbar"
-    ></iframe>
+    <div id="windows-task-container"></div>
 
 
-    <!-- ==========================================
-         CONTROLE DOS PROGRAMAS
-         ========================================== -->
+    <script src="assets/scripts/windows_task.js"></script>
+
     <script>
+        /*
+         * =========================================================
+         * CARREGADOR DE HTML POR FETCH
+         * =========================================================
+         *
+         * Esta função permite carregar um arquivo HTML dentro
+         * de uma DIV sem usar iframe.
+         *
+         * Ela também:
+         * - corrige caminhos relativos de src/href;
+         * - importa CSS encontrado no <head>;
+         * - executa scripts externos e scripts inline.
+         *
+         * IMPORTANTE:
+         * fetch() precisa rodar por HTTP/HTTPS.
+         * Use Live Server durante o desenvolvimento.
+         */
 
-    function abrirPrograma(caminho, id) {
+        async function carregarHTML(caminho, destino) {
 
-        const container =
-            document.getElementById(
-                "programas-container"
-            );
+            const elementoDestino =
+                typeof destino === "string"
+                    ? document.getElementById(destino)
+                    : destino;
+
+            if (!elementoDestino) {
+                console.error(
+                    "Destino não encontrado para carregar:",
+                    caminho
+                );
+                return;
+            }
+
+            try {
+
+                const resposta = await fetch(caminho);
+
+                if (!resposta.ok) {
+                    throw new Error(
+                        `Erro HTTP ${resposta.status} ao carregar ${caminho}`
+                    );
+                }
+
+                const textoHTML = await resposta.text();
+
+                const parser = new DOMParser();
+
+                const documento = parser.parseFromString(
+                    textoHTML,
+                    "text/html"
+                );
+
+                /*
+                 * URL base do arquivo carregado.
+                 * Serve para corrigir caminhos relativos.
+                 */
+                const urlBase = new URL(
+                    caminho,
+                    window.location.href
+                );
 
 
-        if (!container) {
+                /*
+                 * ==========================================
+                 * IMPORTA CSS DO HTML CARREGADO
+                 * ==========================================
+                 */
 
-            console.error(
-                "Container de programas não encontrado."
-            );
+                documento
+                    .querySelectorAll('link[rel="stylesheet"]')
+                    .forEach(link => {
 
-            return;
+                        const hrefOriginal =
+                            link.getAttribute("href");
+
+                        if (!hrefOriginal) {
+                            return;
+                        }
+
+                        const hrefFinal =
+                            new URL(
+                                hrefOriginal,
+                                urlBase
+                            ).href;
+
+                        /*
+                         * Evita importar o mesmo CSS várias vezes.
+                         */
+                        const jaExiste =
+                            Array.from(
+                                document.querySelectorAll(
+                                    'link[rel="stylesheet"]'
+                                )
+                            ).some(item => item.href === hrefFinal);
+
+                        if (!jaExiste) {
+
+                            const novoLink =
+                                document.createElement("link");
+
+                            novoLink.rel =
+                                "stylesheet";
+
+                            novoLink.href =
+                                hrefFinal;
+
+                            document.head.appendChild(
+                                novoLink
+                            );
+
+                        }
+
+                    });
+
+
+                /*
+                 * IMPORTA <style> DO HTML CARREGADO
+                 */
+
+                documento
+                    .querySelectorAll("head style")
+                    .forEach(styleOriginal => {
+
+                        const novoStyle =
+                            document.createElement("style");
+
+                        novoStyle.textContent =
+                            styleOriginal.textContent;
+
+                        document.head.appendChild(
+                            novoStyle
+                        );
+
+                    });
+
+
+                /*
+                 * ==========================================
+                 * PREPARA O CONTEÚDO DO BODY
+                 * ==========================================
+                 */
+
+                const fragmento =
+                    document.createElement("div");
+
+                fragmento.innerHTML =
+                    documento.body.innerHTML;
+
+
+                /*
+                 * Corrige caminhos relativos dentro
+                 * do HTML carregado.
+                 */
+
+                fragmento
+                    .querySelectorAll("[src]")
+                    .forEach(elemento => {
+
+                        const src =
+                            elemento.getAttribute("src");
+
+                        if (
+                            !src ||
+                            src.startsWith("data:") ||
+                            src.startsWith("blob:")
+                        ) {
+                            return;
+                        }
+
+                        elemento.setAttribute(
+                            "src",
+                            new URL(
+                                src,
+                                urlBase
+                            ).href
+                        );
+
+                    });
+
+
+                fragmento
+                    .querySelectorAll("[href]")
+                    .forEach(elemento => {
+
+                        const href =
+                            elemento.getAttribute("href");
+
+                        if (
+                            !href ||
+                            href.startsWith("#") ||
+                            href.startsWith("mailto:") ||
+                            href.startsWith("tel:") ||
+                            href.startsWith("javascript:")
+                        ) {
+                            return;
+                        }
+
+                        elemento.setAttribute(
+                            "href",
+                            new URL(
+                                href,
+                                urlBase
+                            ).href
+                        );
+
+                    });
+
+
+                /*
+                 * Guarda os scripts antes de inserir
+                 * o conteúdo na página.
+                 */
+
+                const scripts =
+                    Array.from(
+                        fragmento.querySelectorAll(
+                            "script"
+                        )
+                    );
+
+                scripts.forEach(script => {
+                    script.remove();
+                });
+
+
+                /*
+                 * Insere o HTML no destino.
+                 */
+
+                elementoDestino.innerHTML = "";
+
+                while (fragmento.firstChild) {
+                    elementoDestino.appendChild(
+                        fragmento.firstChild
+                    );
+                }
+
+
+                /*
+                 * ==========================================
+                 * EXECUTA OS SCRIPTS DO HTML CARREGADO
+                 * ==========================================
+                 */
+
+                for (const scriptOriginal of scripts) {
+
+                    const novoScript =
+                        document.createElement("script");
+
+                    if (
+                        scriptOriginal.hasAttribute(
+                            "src"
+                        )
+                    ) {
+
+                        novoScript.src =
+                            new URL(
+                                scriptOriginal.getAttribute(
+                                    "src"
+                                ),
+                                urlBase
+                            ).href;
+
+                        /*
+                         * Espera o script externo carregar
+                         * antes de continuar.
+                         */
+
+                        await new Promise(
+                            (resolve, reject) => {
+
+                                novoScript.onload =
+                                    resolve;
+
+                                novoScript.onerror =
+                                    reject;
+
+                                document.body.appendChild(
+                                    novoScript
+                                );
+
+                            }
+                        );
+
+                    } else {
+
+                        novoScript.textContent =
+                            scriptOriginal.textContent;
+
+                        document.body.appendChild(
+                            novoScript
+                        );
+
+                    }
+
+                }
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao carregar HTML:",
+                    caminho,
+                    erro
+                );
+
+            }
 
         }
-
-
-        let programa =
-            document.getElementById(id);
 
 
         /*
-         * PROGRAMA JÁ ABERTO
-         */
-        if (programa) {
-
-            programa.style.display =
-                "block";
-
-            return;
-
-        }
-
-
-        /*
-         * CRIA O PROGRAMA
+         * =========================================================
+         * ABRIR PROGRAMA
+         * =========================================================
          */
 
-        programa =
-            document.createElement(
-                "iframe"
-            );
+        async function abrirPrograma(
+            caminho,
+            id
+        ) {
 
+            const container =
+                document.getElementById(
+                    "programas-container"
+                );
 
-        programa.src =
-            caminho;
-
-
-        programa.id =
-            id;
-
-
-        programa.className =
-            "programa-popup";
-
-
-        programa.title =
-            id;
-
-
-        programa.setAttribute(
-            "allowtransparency",
-            "true"
-        );
-
-
-        container.appendChild(
-            programa
-        );
-
-    }
-
-
-
-    /*
-     * ESCUTA A TASKBAR
-     */
-
-    window.addEventListener(
-    "message",
-    function (event) {
-
-        const dados = event.data;
-
-        if (!dados) {
-            return;
-        }
-
-
-        /* ABRIR PROGRAMA */
-
-        if (dados.tipo === "abrirPrograma") {
-
-            abrirPrograma(
-                dados.caminho,
-                dados.id
-            );
-
-        }
-
-
-        /* FECHAR PROGRAMA */
-
-        if (dados.tipo === "fecharPrograma") {
+            if (!container) {
+                console.error(
+                    "Container de programas não encontrado."
+                );
+                return;
+            }
 
             /*
-             * Descobre qual iframe enviou
-             * indiretamente a mensagem.
-             *
-             * Por enquanto, como temos apenas
-             * o Gabrielzinho, fechamos ele.
+             * Se o programa já estiver aberto,
+             * apenas mostra novamente.
              */
 
-            const programa =
-                document.getElementById(
-                    "programaGabrielzinho"
+            let programa =
+                document.getElementById(id);
+
+            if (programa) {
+
+                programa.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            /*
+             * Cria uma DIV para o programa.
+             * Não usamos mais iframe aqui.
+             */
+
+            programa =
+                document.createElement(
+                    "div"
                 );
+
+            programa.id =
+                id;
+
+            programa.className =
+                "programa-popup";
+
+            container.appendChild(
+                programa
+            );
+
+
+            /*
+             * Carrega o HTML do programa
+             * dentro da DIV.
+             */
+
+            await carregarHTML(
+                caminho,
+                programa
+            );
+
+        }
+
+
+        /*
+         * Deixa a função disponível globalmente.
+         * Isso ajuda durante a migração dos scripts.
+         */
+
+        window.abrirPrograma =
+            abrirPrograma;
+
+
+        /*
+         * =========================================================
+         * FECHAR PROGRAMA
+         * =========================================================
+         */
+
+        function fecharPrograma(id) {
+
+            const programa =
+                document.getElementById(id);
 
             if (programa) {
                 programa.remove();
@@ -243,12 +441,88 @@
 
         }
 
-    }
-);
-
-</script>
+        window.fecharPrograma =
+            fecharPrograma;
 
 
+        /*
+         * =========================================================
+         * COMPATIBILIDADE TEMPORÁRIA COM postMessage()
+         * =========================================================
+         *
+         * Pode ser removido depois que todos os componentes
+         * deixarem de usar iframe.
+         */
+
+        window.addEventListener(
+            "message",
+            function (event) {
+
+                const dados =
+                    event.data;
+
+                if (!dados) {
+                    return;
+                }
+
+                if (
+                    dados.tipo ===
+                    "abrirPrograma"
+                ) {
+
+                    abrirPrograma(
+                        dados.caminho,
+                        dados.id
+                    );
+
+                }
+
+                if (
+                    dados.tipo ===
+                    "fecharPrograma"
+                ) {
+
+                    /*
+                     * Compatibilidade temporária
+                     * com o Gabrielzinho.
+                     */
+
+                    fecharPrograma(
+                        dados.id ||
+                        "programaGabrielzinho"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /*
+         * =========================================================
+         * CARREGA A TASKBAR AO INICIAR O DESKTOP
+         * =========================================================
+         */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            async function () {
+
+                await carregarHTML(
+                    "windows_task.html",
+                    "windows-task-container"
+                );
+
+                /*
+                 * A taskbar já está no DOM.
+                 * Agora adicionamos os eventos aos botões.
+                 */
+                iniciarWindowsTaskbar();
+
+            }
+        );
+
+    </script>
 
 </body>
 

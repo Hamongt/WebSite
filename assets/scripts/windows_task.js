@@ -1,38 +1,58 @@
-document.addEventListener("DOMContentLoaded", function () {
+function iniciarWindowsTaskbar() {
 
-    const programas = document.querySelectorAll(".taskbar-program");
+    const programas =
+        document.querySelectorAll(".taskbar-program");
+
+    console.log(
+        "Programas encontrados na taskbar:",
+        programas.length
+    );
 
     programas.forEach(function (botao) {
 
         botao.addEventListener("click", function () {
 
-            const caminho = botao.dataset.program;
-            const id = botao.dataset.id;
+            const caminho =
+                botao.dataset.program;
+
+            const id =
+                botao.dataset.id;
+
+            console.log(
+                "Abrindo programa:",
+                caminho,
+                id
+            );
 
             if (!caminho || !id) {
+
                 console.error(
-                    "Programa sem data-program ou data-id:",
-                    botao
+                    "Programa sem caminho ou ID."
                 );
 
                 return;
             }
 
-            /*
-             * Envia uma mensagem para o index.html
-             * mesmo estando dentro de um iframe.
-             */
-            window.parent.postMessage(
-                {
-                    tipo: "abrirPrograma",
-                    caminho: caminho,
-                    id: id
-                },
-                "*"
-            );
+            if (
+                typeof window.abrirPrograma ===
+                "function"
+            ) {
+
+                window.abrirPrograma(
+                    caminho,
+                    id
+                );
+
+            } else {
+
+                console.error(
+                    "abrirPrograma() não existe."
+                );
+
+            }
 
         });
 
     });
 
-});
+}

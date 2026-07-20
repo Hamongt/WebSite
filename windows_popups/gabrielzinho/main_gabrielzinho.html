@@ -1,392 +1,412 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!-- =========================================================
+     CSS GERAL DAS JANELAS
+     Reutilizado por todos os programas/janelas do sistema
+     ========================================================= -->
+<link
+    rel="stylesheet"
+    href="../../assets/css/windows_main.css"
+>
 
-<head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>SkyLike - Main</title>
-
-    <link rel="stylesheet" href="../../assets/css/windows_main.css">
-    <style>
-
-        /*
-        O windows_main não possui background próprio.
-        O fundo pertence ao index.html (desktop).
-        */
-
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-
-            width: 100%;
-            height: 100%;
-
-            background: transparent !important;
-            background-image: none !important;
-        }
+<!-- =========================================================
+     CSS ESPECÍFICO DO PROGRAMA GABRIELZINHO
+     Contém estilos exclusivos desta página/programa
+     ========================================================= -->
+<link
+    rel="stylesheet"
+    href="../../assets/css/gabrielzinho.css"
+>
 
 
-        /* COMPONENTES REUTILIZÁVEIS DA JANELA */
-        .componente-navbar {
-            display: block;
-            width: 100%;
-            height: 38px;
-            border: 0;
-            background: transparent;
-            overflow: hidden;
-        }
-
-        .componente-logout {
-            display: block;
-            width: 100%;
-            height: 48px;
-            border: 0;
-            background: transparent;
-            overflow: hidden;
-        }
-
-    </style>
-
-</head>
+<!-- =========================================================
+     JANELA PRINCIPAL DO PROGRAMA GABRIELZINHO
+     Esta é a "casca" visual da aplicação
+     ========================================================= -->
+<div class="janela" id="janelaPrincipal">
 
 
-<body>
-
-
-    <!-- ==========================================
-         JANELA PRINCIPAL
-         ========================================== -->
-
+    <!-- =====================================================
+         CABEÇALHO / NAVBAR DA JANELA
+         Será carregado dinamicamente via fetch()
+         Aqui ficam título, minimizar, maximizar e fechar
+         ===================================================== -->
     <div
-        class="janela"
-        id="janelaPrincipal"
+        id="navbarProgram"
+        class="componente-navbar"
+    ></div>
+
+
+    <!-- =====================================================
+         MENU SUPERIOR DO PROGRAMA
+         Será carregado dinamicamente via fetch()
+         Aqui ficam Conteúdos, Editar, Favoritos, Tools etc.
+         ===================================================== -->
+    <div
+        id="menuGabrielzinho"
+        class="componente-menu"
+    ></div>
+
+
+    <!-- =====================================================
+         ÁREA PRINCIPAL DE CONTEÚDO
+         Tudo que aparece dentro da janela fica aqui
+         ===================================================== -->
+    <div
+        class="conteudo"
+        id="conteudoPrincipal"
     >
 
 
-        <!-- ======================================
-             CABEÇALHO PADRÃO DA JANELA
-             ====================================== -->
+        <!-- =================================================
+             SEÇÃO DE PERFIL
+             Foto, nome, saudação, descrição e links sociais
+             ================================================= -->
+        <div
+            class="perfil"
+            id="perfilContainer"
+        >
 
-        <iframe
-            src="../navbar_program.html"
-            class="componente-navbar"
-            id="navbarProgram"
-            title="Barra da janela"
-        ></iframe>
-
-
-        <!-- ======================================
-             MENU
-             ====================================== -->
-
-        <div class="menu">
-
-            <button class="menu-btn">
-
-                <img
-                    src="../../assets/icones/files.png"
-                    class="icone-files"
-                    alt="files"
-                >
-
-                Calendário
-
-            </button>
-
-
-            <button class="menu-btn">
-                ✏️ Edit
-            </button>
-
-
-            <button class="menu-btn">
-                👁️ View
-            </button>
-
-
-            <button class="menu-btn">
-                ⭐ Favorites
-            </button>
-
-
-            <a
-                href="../../tools.html"
-                class="menu-btn"
-                style="text-decoration:none;"
+            <!-- FOTO DE PERFIL -->
+            <img
+                id="fotoPerfil"
+                src="../../assets/images/me.png"
+                class="foto-perfil"
             >
-                🛠️ Tools
-            </a>
 
 
-            <button class="menu-btn">
-                ❓ Help
-            </button>
+            <!-- INFORMAÇÕES DO PERFIL -->
+            <div class="info-perfil">
 
+                <!-- NOME DO PERFIL -->
+                <h1 id="nomePerfil">
+                    Gabrielzinho!
+                </h1>
 
-            <!-- PESQUISA -->
+                <!-- SUBTÍTULO / SAUDAÇÃO -->
+                <p id="subtituloPerfil">
+                    Bem-vindo ao meu mundo!
 
-            <div class="search-container">
+                    <img
+                        src="../../assets/icones/pika.gif"
+                        alt="GIF animado"
+                        style="
+                            width:25px;
+                            height:25px;
+                            vertical-align:middle;
+                        "
+                    >
+                </p>
 
-                <input
-                    type="text"
-                    class="search-input"
-                    placeholder="🔍 Pesquisar..."
+                <!-- DESCRIÇÃO CURTA -->
+                <p
+                    class="descricao"
+                    id="descricaoPerfil"
                 >
+                    🌊 Frutiger Aero • HAMONZINHO • Y2K
+                </p>
 
-                <button class="search-btn">
-                    🔍
-                </button>
+                <!--
+                    LINKS SOCIAIS DINÂMICOS
+                    O JavaScript pode preencher este bloco
+                    com links configurados para o usuário
+                -->
+                <div
+                    class="social-links-usuario"
+                    id="socialLinks"
+                ></div>
 
             </div>
 
         </div>
 
 
+        <!-- =================================================
+             SEÇÃO DE BOAS-VINDAS / HOME PAGE
+             Caixa principal de apresentação do site
+             ================================================= -->
+        <div class="caixa-boas-vindas">
 
-        <!-- ======================================
-             CONTEÚDO PRINCIPAL
-             ====================================== -->
+            <!-- CABEÇALHO DA CAIXA -->
+            <div class="header">
 
-        <div
-            class="conteudo"
-            id="conteudoPrincipal"
-        >
+                <span style="font-size: 18px;"><img src="../../assets/icones/feliz.gif" alt="GIF" style="width: 25px; height: 25px; vertical-align: middle;"></span>
 
+                <span>
+                    Home Page
+                </span>
 
-            <!-- ==================================
-                 PERFIL
-                 ================================== -->
-
-            <div
-                class="perfil"
-                id="perfilContainer"
-            >
+            </div>
 
 
-                <img
-                    id="fotoPerfil"
-                    src="../../assets/icones/Sem título - 17 de julho de 2026 às 17.46.02.png"
-                    class="foto-perfil"
+            <!-- CORPO DA CAIXA -->
+            <div class="corpo">
+
+                <!-- TÍTULO DA BOAS-VINDAS -->
+                <h2>
+                    OII!!!
+
+                    <img
+                        src="../../assets/images/pokemon-cleffa.gif"
+                        alt="GIF"
+                        style="
+                            width: 25px;
+                            height: 25px;
+                            vertical-align: middle;
+                        "
+                    >
+                </h2>
+
+
+                <!-- TEXTO DE APRESENTAÇÃO -->
+                <p>
+                    Seja muito bem-vindo(a) ao meu WebSite, o meu cantinho na internet!
+                    Este é um espaço onde compartilho um pouco sobre mim, meus projetos,
+                    meus hobbies e tudo aquilo que faz parte do meu mundo. O site foi
+                    inspirado na estética Frutiger Aero, trazendo aquele clima nostálgico
+                    dos anos 2000 com efeitos de vidro, paisagens, céu azul e uma atmosfera
+                    tranquila. Fique à vontade para explorar cada página, ouvir a música
+                    ambiente e conhecer um pouco mais sobre mim. Espero que sua visita seja
+                    agradável e que você aproveite essa experiência. Obrigado por passar
+                    por aqui! 💙☁️
+                </p>
+                <!-- IMAGEM DE BOAS-VINDAS -->
+                <div class="imagem-boas-vindas">
+                    <img
+                        src="../../assets/images/bem.gif"
+                        alt="Welcome Home"
+                        style="
+                            width:190px;
+                            height:90px;
+                            display:block;
+                            margin:0 auto;
+                        "
+                    >
+                </div>
+            </div>
+
+    <!-- =================================================
+    SEÇÃO DE UPDATES / CHANGELOG
+    O conteúdo vem do arquivo updates.html
+    ================================================= -->
+    <div id="updates-container"></div>
+
+
+        <!-- =================================================
+             SEÇÃO EXTRA
+             Área inferior da janela com redes sociais,
+             player de música e rodapé
+             ================================================= -->
+        <div class="conteudo-extra">
+
+
+            <!-- =================================================
+                 REDES SOCIAIS
+                 Links fixos para TikTok, Instagram e LinkedIn
+                 ================================================= -->
+            <div class="social-icons">
+
+
+                <!-- TIKTOK -->
+                <a
+                    href="https://www.tiktok.com/@gabrieltaveira1"
+                    target="_blank"
+                    class="social-link"
                 >
-
-
-                <div class="info-perfil">
-
-
-                    <h1 id="nomePerfil">
-                        Gabrielzinho!
-                    </h1>
-
-
-                    <p id="subtituloPerfil">
-
-                        Bem-vindo ao meu mundo!
-
-                        <img
-                            src="../../assets/icones/pika.gif"
-                            alt="GIF animado"
-                            style="
-                                width:25px;
-                                height:25px;
-                                vertical-align:middle;
-                            "
-                        >
-
-                    </p>
-
-
-                    <p
-                        class="descricao"
-                        id="descricaoPerfil"
+                    <img
+                        src="../../assets/icones/tiktok.png"
+                        class="icone-social"
                     >
-                        🌊 Frutiger Aero • HAMONZINHO • Y2K
-                    </p>
+
+                    <span>
+                        TikTok
+                    </span>
+                </a>
 
 
-                    <!-- LINKS SOCIAIS -->
-
-                    <div
-                        class="social-links-usuario"
-                        id="socialLinks"
+                <!-- INSTAGRAM -->
+                <a
+                    href="https://www.instagram.com/gabriel_taveira12/"
+                    target="_blank"
+                    class="social-link"
+                >
+                    <img
+                        src="../../assets/icones/instagram.png"
+                        class="icone-social"
                     >
+
+                    <span>
+                        Instagram
+                    </span>
+                </a>
+
+
+                <!-- LINKEDIN -->
+                <a
+                    href="https://www.linkedin.com/in/gabriel-taveira12"
+                    target="_blank"
+                    class="social-link"
+                >
+                    <img
+                        src="../../assets/icones/LinkedIn.png"
+                        class="icone-social"
+                    >
+
+                    <span>
+                        LinkedIn
+                    </span>
+                </a>
+                <!-- DISCORD -->
+                    <div class="discord-wrapper" id="discordWrapper">
+                        <a href="#" class="social-link discord-link" id="discordBtn">
+                            <img src="../../assets/icones/discord2.png" class="icone-social" alt="Discord">
+                            <span>Discord</span>
+                        </a>
+                        <div class="discord-popup" id="discordPopup">
+                            <div class="discord-popup-content">
+                                <span class="discord-icone">🎮</span>
+                                <span class="discord-nome" id="discordNome">@Hamonzinho12</span>
+                            </div>
+                            <button class="fechar-popup" id="fecharPopup">✕</button>
+                        </div>
                     </div>
 
+            </div>
+
+
+            <!-- =================================================
+                 PLAYER DE MÚSICA
+                 Botão Play/Pause e controle de volume
+                 ================================================= -->
+            <div class="player-musica">
+
+
+                <!-- NOME / IDENTIFICAÇÃO DO PLAYER -->
+                <span class="musica-info">
+
+                    <img
+                        src="../../assets/icones/music.png"
+                        class="icone-titulo"
+                    >
+
+                    Música Ambiente
+
+                </span>
+
+
+                <!-- CONTROLES DO PLAYER -->
+                <div class="volume-wrapper">
+
+
+                    <!-- BOTÃO PLAY / PAUSE -->
+                    <button
+                        class="btn-play"
+                        id="playPauseBtn"
+                    >
+                        ⏸️
+                    </button>
+
+
+                    <!-- POPUP DE VOLUME -->
+                    <div class="volume-popup">
+
+
+                        <!-- SLIDER DE VOLUME -->
+                        <input
+                            type="range"
+                            id="volumeControl"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value="0.03"
+                            class="volume-slider-horizontal"
+                        >
+
+
+                        <!-- PORCENTAGEM DO VOLUME -->
+                        <span
+                            class="volume-label"
+                            id="volumeLabel"
+                        >
+                            3%
+                        </span>
+
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <!-- ==================================
-                 AQUI CONTINUA O CONTEÚDO
-                 DA SUA JANELA ORIGINAL
-                 ================================== -->
-
-            <div class="conteudo-extra">
-
-
-                <!-- REDES SOCIAIS -->
-
-                <div class="social-icons">
-
-
-                    <a
-                        href="https://www.tiktok.com/@gabrieltaveira1"
-                        target="_blank"
-                        class="social-link"
-                    >
-
-                        <img
-                            src="../../assets/icones/tiktok.png"
-                            class="icone-social"
-                        >
-
-                        <span>TikTok</span>
-
-                    </a>
-
-
-                    <a
-                        href="https://www.instagram.com/gabriel_taveira12/"
-                        target="_blank"
-                        class="social-link"
-                    >
-
-                        <img
-                            src="../../assets/icones/instagram.png"
-                            class="icone-social"
-                        >
-
-                        <span>Instagram</span>
-
-                    </a>
-
-
-                    <a
-                        href="https://www.linkedin.com/in/gabriel-taveira12"
-                        target="_blank"
-                        class="social-link"
-                    >
-
-                        <img
-                            src="../../assets/icones/LinkedIn.png"
-                            class="icone-social"
-                        >
-
-                        <span>LinkedIn</span>
-
-                    </a>
-
-
-                </div>
-
-
-
-                <!-- ==================================
-                     PLAYER DE MÚSICA
-                     ================================== -->
-
-                <div class="player-musica">
-
-                    <span class="musica-info">
-
-                        <img
-                            src="../../assets/icones/music.png"
-                            class="icone-titulo"
-                        >
-
-                        Música Ambiente
-
-                    </span>
-
-
-                    <div class="volume-wrapper">
-
-                        <button
-                            class="btn-play"
-                            id="playPauseBtn"
-                        >
-                            ⏸️
-                        </button>
-
-
-                        <div class="volume-popup">
-
-                            <input
-                                type="range"
-                                id="volumeControl"
-                                min="0"
-                                max="1"
-                                step="0.01"
-                                value="0.03"
-                                class="volume-slider-horizontal"
-                            >
-
-                            <span
-                                class="volume-label"
-                                id="volumeLabel"
-                            >
-                                3%
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-
-
-                <!-- ==================================
-                     RODAPÉ / SAIR PADRÃO
-                     ================================== -->
-
-                <iframe
-                    src="../logout.html"
-                    class="componente-logout"
-                    id="logoutProgram"
-                    title="Rodapé da janela"
-                ></iframe>
-
-</div>
+            <!-- =================================================
+                 RODAPÉ / LOGOUT
+                 Será carregado dinamicamente via fetch()
+                 Aqui ficam relógio, data e botão Sair
+                 ================================================= -->
+            <div
+                id="logoutProgram"
+                class="componente-logout"
+            ></div>
 
         </div>
 
     </div>
 
+</div>
 
-    <!-- ==========================================
-         ÁUDIO
-         ========================================== -->
 
-    <audio
-        id="musicaAmbiente"
-        loop
+<!-- =========================================================
+     ÁUDIO DE FUNDO
+     Elemento usado pelo player de música
+     ========================================================= -->
+<audio
+    id="musicaAmbiente"
+    loop
+>
+    <source
+        src="../../assets/social-media-phone-icons/Musicas/musica.mp3"
+        type="audio/mpeg"
     >
-
-        <source
-            src="../../assets/social-media-phone-icons/Musicas/musica.mp3"
-            type="audio/mpeg"
-        >
-
-    </audio>
+</audio>
 
 
-    <!-- ==========================================
-         JAVASCRIPT DA JANELA
-         ========================================== -->
+<!-- =========================================================
+     CARREGAMENTO DOS COMPONENTES DA JANELA
+     Cada componente é inserido via fetch() usando carregarHTML()
+     ========================================================= -->
+<script>
+    /*
+     * CARREGA A NAVBAR PADRÃO
+     * Contém minimizar, maximizar e fechar
+     */
+    carregarHTML(
+        "windows_popups/navbar_program.html",
+        "navbarProgram"
+    );
 
-    <script src="../../assets/scripts/script.js"></script>
+
+    /*
+     * CARREGA O MENU ESPECÍFICO DO GABRIELZINHO
+     */
+    carregarHTML(
+        "windows_popups/gabrielzinho/menu_gabrielzinho.html",
+        "menuGabrielzinho"
+    );
 
 
-</body>
+    /*
+     * CARREGA O RODAPÉ PADRÃO
+     * Contém horário, data e botão Sair
+     */
+    carregarHTML(
+        "windows_popups/logout.html",
+        "logoutProgram"
+    );
+</script>
 
-</html>
+
+<!-- =========================================================
+     JAVASCRIPT PRINCIPAL
+     Controla player, perfil, relógio, login/logout etc.
+     ========================================================= -->
+<script
+    src="../../assets/scripts/gabrielzinho.js"
+></script>

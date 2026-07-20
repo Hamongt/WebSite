@@ -1,0 +1,92 @@
+/* ==========================================
+   CAIXA DE BOAS-VINDAS
+   ESPECÍFICA DO PROGRAMA GABRIELZINHO
+   ========================================== */
+
+.caixa-boas-vindas {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 128, 255, 0.4);
+    border-radius: 12px;
+    padding: 0;
+    margin-bottom: 18px;
+    overflow: hidden;
+}
+
+.caixa-boas-vindas .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+
+    background: linear-gradient(
+        145deg,
+        rgb(10, 85, 197),
+        rgb(8, 195, 158)
+    );
+
+    border-bottom:
+        1px solid rgba(235, 6, 6, 0.04);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.caixa-boas-vindas .header span:last-child {
+    flex: 1;
+    letter-spacing: 0.3px;
+}
+
+.caixa-boas-vindas .corpo {
+    padding: 16px 18px 18px;
+
+    color: rgba(255, 255, 255, 0.80);
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.caixa-boas-vindas .corpo h2 {
+    color: rgba(255, 255, 255, 0.95);
+
+    font-size: 22px;
+    font-weight: 300;
+
+    margin: 0 0 8px 0;
+}
+
+.caixa-boas-vindas .corpo p {
+    margin: 0 0 10px 0;
+}
+
+.caixa-boas-vindas .corpo p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================
+   CORREÇÃO DA CAIXA DE BOAS-VINDAS
+   ========================================== */
+
+.caixa-boas-vindas {
+    flex-shrink: 0;
+    width: 100%;
+    min-height: fit-content;
+}
+
+.caixa-boas-vindas .corpo {
+    display: block;
+    height: auto;
+    overflow: visible;
+}
+
+/* evita que o perfil seja comprimido */
+.perfil {
+    flex-shrink: 0;
+}
+
+/* evita que a parte inferior comprima a caixa */
+.conteudo-extra {
+    flex-shrink: 0;
+    margin-top: 18px;
+}

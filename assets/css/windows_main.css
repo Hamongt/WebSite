@@ -201,23 +201,6 @@
     outline: none;
 }
 
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    background: transparent !important;
-    background-image: none !important;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Segoe UI", sans-serif;
-    cursor: url('../icones/cursor.png'), auto;
-}
 /* ==========================================
    MENU
    ========================================== */
@@ -729,61 +712,6 @@ body {
 }
 
 /* ==========================================
-   BOLHAS DE FUNDO (FRUTIGER AERO)
-   ========================================== */
-.bolhas-imagem {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.bubble {
-    position: absolute;
-    bottom: -250px;
-    opacity: .45;
-    animation-name: subirBolha;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, .55));
-}
-
-@keyframes subirBolha {
-    0% {
-        transform: translateY(0px) translateX(0px) scale(.6);
-        opacity: 0;
-    }
-    10% {
-        opacity: .5;
-    }
-    30% {
-        transform: translateY(-30vh) translateX(20px) scale(.75);
-    }
-    60% {
-        transform: translateY(-65vh) translateX(-25px) scale(.9);
-    }
-    100% {
-        transform: translateY(-120vh) translateX(15px) scale(1.1);
-        opacity: 0;
-    }
-}
-
-.b1 { left: 3%; width: 70px; animation-duration: 18s; animation-delay: 0s; }
-.b2 { left: 12%; width: 45px; animation-duration: 12s; animation-delay: 2s; }
-.b3 { left: 25%; width: 120px; animation-duration: 25s; animation-delay: 5s; }
-.b4 { left: 40%; width: 65px; animation-duration: 15s; animation-delay: 1s; }
-.b5 { left: 50%; width: 100px; animation-duration: 20s; animation-delay: 8s; }
-.b6 { left: 63%; width: 55px; animation-duration: 14s; animation-delay: 3s; }
-.b7 { left: 72%; width: 85px; animation-duration: 17s; animation-delay: 7s; }
-.b8 { left: 80%; width: 140px; animation-duration: 28s; animation-delay: 6s; }
-.b9 { left: 90%; width: 60px; animation-duration: 16s; animation-delay: 10s; }
-.b10 { left: 96%; width: 95px; animation-duration: 21s; animation-delay: 12s; }
-
-
-
-
-/* ==========================================
    CAIXAS DE DIÁLOGO - FRUTIGER AERO
    ========================================== */
 
@@ -828,6 +756,7 @@ body {
     flex: 1;
     letter-spacing: 0.3px;
     background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(0,200,255,0.6));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -1049,4 +978,18 @@ body {
     color: rgba(255, 255, 255, 0.8);
     border-color: rgba(255, 255, 255, 0.12);
     transform: scale(1.02);
+}
+
+/* ==========================================
+   ESTADO MAXIMIZADO DA JANELA
+   ========================================== */
+
+.programa-popup.maximizado {
+    width: 85vw;
+    height: 82vh;
+}
+
+.programa-popup.maximizado .janela {
+    width: 100%;
+    height: 100%;
 }
