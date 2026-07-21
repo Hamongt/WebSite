@@ -4,10 +4,10 @@
    ========================================== */
 
 .frutiger{
-    font-size:15px;
-    font-weight:bold;
+    font-size: 15px;
+    font-weight: bold;
 
-    background:linear-gradient(
+    background: linear-gradient(
         100deg,
         #6be5ff,
         #4cffb0,
@@ -19,28 +19,143 @@
         #6be5ff
     );
 
-    background-size:500%;
+    background-size: 500%;
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    /* ===== CORREÇÃO AQUI ===== */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* ← ADICIONE ESTA LINHA */
 
-    animation:aeroRainbow 8s linear infinite;
+    animation: aeroRainbow 8s linear infinite;
 
     text-shadow:
-        0 0 5px rgba(255,255,255,.6),
-        0 0 12px rgba(0,200,255,.5),
-        0 0 20px rgba(0,255,200,.3);
+        0 0 5px rgba(255, 255, 255, .6),
+        0 0 12px rgba(0, 200, 255, .5),
+        0 0 20px rgba(0, 255, 200, .3);
+}
+
+@keyframes aeroRainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 500% 50%;
+    }
 }
 
 
-@keyframes aeroRainbow {
+/* ============================================================
+   CARROSSEL INFINITO DE IMAGENS
+   ============================================================ */
 
+.carrossel-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 10px 0;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 8px 0;
+}
+
+.carrossel-track {
+    display: flex;
+    gap: 10px;
+    animation: carrosselAnimacao 20s linear infinite;
+    width: max-content;
+}
+
+.carrossel-track img {
+    width: 35px;
+    height: auto;
+    border: none;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.carrossel-track img:hover {
+    transform: scale(1.3);
+    animation-play-state: paused;
+}
+
+/* Pausa a animação quando o mouse passa por cima */
+.carrossel-container:hover .carrossel-track {
+    animation-play-state: paused;
+}
+
+/* ===== ANIMAÇÃO DO CARROSSEL ===== */
+@keyframes carrosselAnimacao {
     0% {
-        background-position:0% 50%;
+        transform: translateX(0);
     }
-
     100% {
-        background-position:500% 50%;
+        transform: translateX(-50%);
     }
+}
 
+/* ===== VERSÃO MAIS RÁPIDA ===== */
+.carrossel-rapido .carrossel-track {
+    animation-duration: 12s;
+}
+
+/* ===== VERSÃO MAIS LENTA ===== */
+.carrossel-lento .carrossel-track {
+    animation-duration: 30s;
+}
+/* ===== VERSÃO maior ===== */
+.carrossel-track img {
+    width: 200px !important;  /* Aumente aqui */
+    height: auto;
+    border: none;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   CARROSSEL - VERSÃO PEQUENA (ícones)
+   ============================================================ */
+
+.carrossel-pequeno .carrossel-track img {
+    width: 35px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 4px !important;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   CARROSSEL - VERSÃO MÉDIA (padrão)
+   ============================================================ */
+
+.carrossel-medio .carrossel-track img {
+    width: 60px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 6px !important;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   CARROSSEL - VERSÃO GRANDE
+   ============================================================ */
+
+.carrossel-grande .carrossel-track img {
+    width: 100px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 8px !important;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   CARROSSEL - VERSÃO GIGANTE
+   ============================================================ */
+
+.carrossel-gigante .carrossel-track img {
+    width: 150px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 10px !important;
+    flex-shrink: 0;
 }

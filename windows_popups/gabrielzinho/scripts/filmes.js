@@ -96,7 +96,7 @@ function carregarFilmes(){
 }
 
 
-
+// FUNÇÃO GENÉRICA PARA ADICIONAR A ABA DE FEEDBACK (COMENTARÍO, CURTIDAS, COMPARTILHAMENTO)
 function carregarFeedback(idFilme, artigo){
 
 

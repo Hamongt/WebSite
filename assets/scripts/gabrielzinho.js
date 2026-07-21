@@ -731,6 +731,8 @@ function abrirSubpaginaGabrielzinho(nomePagina) {
     }
 
     const paginas = {
+        main_gabrielzinho:
+            "windows_popups/gabrielzinho/main_gabrielzinho.html",
         postagens:
             "windows_popups/gabrielzinho/subpaginas/postagens.html",
 
@@ -863,7 +865,7 @@ function abrirSubpaginaGabrielzinho(nomePagina) {
                     "gabrielzinhoFilmesCss"
                 );
 
-
+                // AQUI CARREGA O FEEDBACK COMENTÁRIO
                 carregarScriptUmaVez(
                     "windows_popups/gabrielzinho/scripts/feedback.js",
                     "gabrielzinhoFeedbackJs"
