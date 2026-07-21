@@ -81,9 +81,87 @@
 
     </div>
 
-    <div 
-    class="feedback-container"
-    data-feedback="filme-1"
-    ></div>
+    <div class="filme-footer">
+
+        <span
+            class="interacao curtir"
+            data-filme="filme-1"
+        >
+            <span class="icone">❤️</span>
+            <span
+                class="contador"
+                id="curtidas-filme-1"
+            >
+                0
+            </span>
+        </span>
+
+        <span
+            class="interacao comentar"
+            data-filme="filme-1"
+        >
+            <span class="icone">💬</span>
+            <span
+                class="contador"
+                id="comentarios-filme-1"
+            >
+                0
+            </span>
+        </span>
+
+        <span class="interacao compartilhar">
+            <span class="icone">🔗</span>
+            <span>Compartilhar</span>
+        </span>
+
+    </div>
+
+    <div
+        class="comentario-box"
+        id="comentarioBox-filme-1"
+        style="display: none;"
+    >
+
+        <div class="comentario-header">
+            <span>💬 Comentários</span>
+
+            <button
+                type="button"
+                class="fechar-comentario"
+                onclick="fecharComentarios('filme-1')"
+            >
+                ✕
+            </button>
+        </div>
+
+        <div
+            class="comentario-lista"
+            id="listaComentarios-filme-1"
+        >
+            <p class="sem-comentarios">
+                Nenhum comentário ainda. Seja o primeiro!
+            </p>
+        </div>
+
+        <div class="comentario-input-area">
+
+            <input
+                type="text"
+                class="comentario-input"
+                id="inputComentario-filme-1"
+                placeholder="Escreva um comentário..."
+            >
+
+            <button
+                type="button"
+                class="enviar-comentario"
+                onclick="adicionarComentario('filme-1')"
+            >
+                Enviar
+            </button>
+
+        </div>
+
+    </div>
 </div>
 
