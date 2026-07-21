@@ -20,10 +20,8 @@
 // ============================================================
 
 const posts = [
-    { arquivo: "post-3.html", id: "post-3" },
     { arquivo: "post-2.html", id: "post-2" },
-    { arquivo: "post-1.html", id: "post-1" },
-    { arquivo: "post-4.html", id: "post-4" }
+    { arquivo: "post-1.html", id: "post-1" }
 ];
 
 

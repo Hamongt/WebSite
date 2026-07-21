@@ -7,17 +7,6 @@ console.log("🚀 filmes.js carregado");
 
 
 const filmes = [
-
-    {
-        arquivo: "filme-3.html",
-        id: "filme-3"
-    },
-
-    {
-        arquivo: "filme-2.html",
-        id: "filme-2"
-    },
-
     {
         arquivo: "filme-1.html",
         id: "filme-1"
@@ -119,7 +108,7 @@ function carregarFilmes(){
             artigo.innerHTML =
                 html;
 
-
+                
 
             container.appendChild(
                 artigo

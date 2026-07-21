@@ -581,3 +581,232 @@
     flex-shrink: 0;
 }
 
+/* ============================================================
+   ✨ CAVALEIROS DE OURO - BRILHO SUTIL (SEM MUDAR FONTE)
+   ============================================================ */
+
+.texto-ouro {
+    color: #f3f708 !important; /* Rosa-dourado escuro */
+    text-shadow: 
+        0 0 8px rgba(252, 235, 5, 0.3),
+        0 0 16px rgba(198, 231, 8, 0.637),
+        0 0 30px rgba(165, 194, 4, 0.295);
+    animation: brilhoOuroSuave 4s ease-in-out infinite;
+    display: inline-block;
+}
+/* ===== ANIMAÇÃO SUTIL DO BRILHO DOURADO ===== */
+@keyframes brilhoOuroSuave {
+    0% {
+        text-shadow: 
+            0 0 8px rgba(238, 202, 0, 0.932),
+            0 0 16px rgb(214, 130, 3);
+    }
+    50% {
+        text-shadow: 
+            0 0 12px rgba(236, 163, 3, 0.877),
+            0 0 24px rgba(251, 255, 0, 0.89),
+            0 0 40px rgba(255, 153, 0, 0.877);
+    }
+    100% {
+        text-shadow: 
+            0 0 8px rgba(255, 123, 0, 0.918),
+            0 0 16px rgba(223, 89, 12, 0.788);
+    }
+}
+
+/* ============================================================
+   🌑 EFEITO HADES - SÓ SOMBRA E BRILHO (SEM MUDAR FONTE)
+   ============================================================ */
+
+.texto-hades {
+    color: #3d0101e5 !important;
+    text-shadow: 
+        0 0 10px rgba(141, 12, 12, 0.945),
+        0 0 20px rgb(255, 0, 0),
+        0 0 40px rgb(2, 0, 0) !important;
+    animation: brilhoHades 2s ease-in-out infinite alternate;
+    display: inline-block;
+}
+
+/* ===== ANIMAÇÃO DO BRILHO ===== */
+@keyframes brilhoHades {
+    0% {
+        text-shadow: 
+            0 0 10px rgb(255, 0, 0),
+            0 0 20px rgba(255, 0, 0, 0.1);
+    }
+    100% {
+        text-shadow: 
+            0 0 20px rgba(255, 0, 0, 0.5),
+            0 0 40px rgba(255, 0, 0, 0.3),
+            0 0 80px rgba(23, 0, 235, 0.966);
+        transform: scale(1.02);
+    }
+}
+/* ============================================================
+   🌑 HADES - BRILHO EM TONS DE VERMELHO E PRETO
+   ============================================================ */
+
+.texto-hades {
+    font-weight: 900;
+    color: #1a0505;
+    background: linear-gradient(
+        180deg,
+        #1a0505 0%,
+        #2a0a0a 25%,
+        #3d0a0a 50%,
+        #2a0505 75%,
+        #1a0000 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+        0 0 10px rgba(255, 0, 0, 0.2),
+        0 0 20px rgba(200, 0, 0, 0.15),
+        0 0 30px rgba(150, 0, 0, 0.1);
+    animation: brilhoHades 2s ease-in-out infinite alternate;
+    display: inline-block;
+}
+
+/* ============================================================
+   🌑 HADES - BRILHO FLUIDO EM PRETO E VERMELHO (SEM PULSAR)
+   ============================================================ */
+
+.texto-hades {
+    font-weight: 900;
+    font-size: inherit;
+    color: #0a0000;
+    background: linear-gradient(
+        180deg,
+        #0a0000 0%,
+        #1a0505 20%,
+        #2a0808 40%,
+        #3a0a0a 60%,
+        #2a0505 80%,
+        #0a0000 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+        0 0 15px rgba(180, 0, 0, 0.15),
+        0 0 30px rgba(150, 0, 0, 0.08);
+    animation: brilhoHadesFluido 4s ease-in-out infinite;
+    display: inline-block;
+}
+
+/* ===== ANIMAÇÃO FLUIDA EM PRETO E VERMELHO (SEM PULSAR) ===== */
+@keyframes brilhoHadesFluido {
+    0% {
+        background: linear-gradient(
+            180deg,
+            #0a0000 0%,
+            #1a0505 25%,
+            #2a0808 50%,
+            #1a0505 75%,
+            #0a0000 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 
+            0 0 15px rgba(180, 0, 0, 0.12),
+            0 0 30px rgba(150, 0, 0, 0.06);
+    }
+    25% {
+        background: linear-gradient(
+            180deg,
+            #0d0000 0%,
+            #2a0808 25%,
+            #3d0a0a 50%,
+            #2a0808 75%,
+            #0d0000 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 
+            0 0 20px rgba(200, 0, 0, 0.2),
+            0 0 40px rgba(160, 0, 0, 0.1);
+    }
+    50% {
+        background: linear-gradient(
+            180deg,
+            #0a0000 0%,
+            #1a0505 30%,
+            #2a0808 60%,
+            #1a0505 80%,
+            #0a0000 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 
+            0 0 18px rgba(180, 0, 0, 0.15),
+            0 0 35px rgba(140, 0, 0, 0.08);
+    }
+    75% {
+        background: linear-gradient(
+            180deg,
+            #0d0000 0%,
+            #2a0808 25%,
+            #4a0a0a 50%,
+            #2a0808 75%,
+            #0d0000 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 
+            0 0 25px rgba(220, 0, 0, 0.25),
+            0 0 50px rgba(180, 0, 0, 0.12);
+    }
+    100% {
+        background: linear-gradient(
+            180deg,
+            #0a0000 0%,
+            #1a0505 25%,
+            #2a0808 50%,
+            #1a0505 75%,
+            #0a0000 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 
+            0 0 15px rgba(180, 0, 0, 0.12),
+            0 0 30px rgba(150, 0, 0, 0.06);
+    }
+}
+/* ===== IMAGEM PEQUENA AO LADO ===== */
+.img-ao-lado-pequena {
+    width: 20px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin-left: 4px !important;
+}
+
+/* ===== IMAGEM MÉDIA AO LADO ===== */
+.img-ao-lado-media {
+    width: 30px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin-left: 4px !important;
+}
+/* ===== IMAGEM GRANDE AO LADO ===== */
+.img-ao-lado-grande{
+    width: 50px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin-left: 4px !important;
+}
