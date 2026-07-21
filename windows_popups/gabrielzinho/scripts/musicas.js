@@ -13,7 +13,7 @@ function carregarFeedback(idFilme, artigo){
 
 
     fetch(
-    "windows_popups/gabrielzinho/componentes/feedback.html"
+    "/WebSite/windows_popups/gabrielzinho/componentes/feedback.html?v=2"
     )
 
     .then(response=>response.text())
