@@ -6,162 +6,60 @@
             <div class="data">17/07/2026</div>
         </div>
     </div>
+
     <span class="filme-tag">🎬 Filme</span>
 </div>
 
+
 <div class="filme-conteudo">
+
     <h3>Filme 1</h3>
     <h3>Interestelar 🚀</h3>
 
-        <p>
-            Um dos melhores filmes de ficção científica de todos os tempos.
-            Viaje pelo espaço, buracos negros e dimensões desconhecidas!
-        </p>
+    <p>
+        Um dos melhores filmes de ficção científica de todos os tempos.
+        Viaje pelo espaço, buracos negros e dimensões desconhecidas!
+    </p>
 
-        <p>
-            A trilha sonora é de arrepiar!
-        </p>
+    <p>
+        A trilha sonora é de arrepiar!
+    </p>
 
-        <!-- IMAGEM PEQUENA -->
-        <!--
-        <img
-            src="../../assets/icones/interestelar.gif"
-            alt="Interestelar"
-            class="img-pequena"
-        >
-        -->
 
-        <!-- IMAGEM MÉDIA -->
-       <!-- ===== CARROSSEL DE FILMES ===== -->
-<div class="carrossel-container carrossel-gigante carrossel-rapido">
-    <div class="carrossel-track">
-        <!-- IMAGENS DOS FILMES -->
-        <img src="../../../../assets/images/filmes/interestelar.gif" alt="Filme 1">
-        <img src="../../../../assets/images/filmes/interestelar2.gif" alt="Filme 2">
-        <img src="../../../../assets/images/filmes/interestelar3.gif" alt="Filme 3">
-        <img src="../../../../assets/images/filmes/interestelar.gif" alt="Filme 4">
-        <img src="../../../../assets/images/filmes/interestelar2.gif" alt="Filme 5">
-        <!-- REPETIÇÃO PARA INFINITO -->
-        <img src="../../../../assets/images/filmes/interestelar3.gif" alt="Filme 1">
-        <img src="../../../../assets/images/filmes/interestelar.gif" alt="Filme 2">
-        <img src="../../../../assets/images/filmes/interestelar2.gif" alt="Filme 3">
-        <img src="../../../../assets/images/filmes/interestelar3.gif" alt="Filme 4">
-        <img src="../../../../assets/images/filmes/interestelar.gif" alt="Filme 5">
+    <div class="carrossel-container carrossel-gigante carrossel-rapido">
+
+        <div class="carrossel-track">
+
+            <img src="../../../../assets/images/filmes/interestelar.gif">
+            <img src="../../../../assets/images/filmes/interestelar2.gif">
+            <img src="../../../../assets/images/filmes/interestelar3.gif">
+            <img src="../../../../assets/images/filmes/interestelar.gif">
+            <img src="../../../../assets/images/filmes/interestelar2.gif">
+
+            <img src="../../../../assets/images/filmes/interestelar3.gif">
+            <img src="../../../../assets/images/filmes/interestelar.gif">
+            <img src="../../../../assets/images/filmes/interestelar2.gif">
+            <img src="../../../../assets/images/filmes/interestelar3.gif">
+            <img src="../../../../assets/images/filmes/interestelar.gif">
+
+        </div>
+
     </div>
+
+
+    <p style="color:rgba(255,255,255,.3);font-size:12px;text-align:center;">
+        🎬 Interestelar - O filme que nos fez sonhar com o espaço!
+    </p>
+
+
 </div>
 
-        <!-- IMAGEM GRANDE -->
-        <!--
-        <img
-            src="../../assets/icones/interestelar.gif"
-            alt="Interestelar"
-            class="img-grande"
-        >
-        -->
 
-        <!-- IMAGEM GIGANTE -->
-        <!--
-        <img
-            src="../../assets/icones/interestelar.gif"
-            alt="Interestelar"
-            class="img-gigante"
-        >
-        -->
-
-        <p
-            style="
-                color: rgba(255,255,255,0.3);
-                font-size: 12px;
-                text-align: center;
-                margin-top: 4px;
-            "
-        >
-            🎬 Interestelar - O filme que nos fez sonhar com o espaço!
-        </p>
-
-    </div>
-
-    <div class="filme-footer">
-
-        <span
-            class="interacao curtir"
-            data-filme="filme-1"
-        >
-            <span class="icone">❤️</span>
-            <span
-                class="contador"
-                id="curtidas-filme-1"
-            >
-                0
-            </span>
-        </span>
-
-        <span
-            class="interacao comentar"
-            data-filme="filme-1"
-        >
-            <span class="icone">💬</span>
-            <span
-                class="contador"
-                id="comentarios-filme-1"
-            >
-                0
-            </span>
-        </span>
-
-        <span class="interacao compartilhar">
-            <span class="icone">🔗</span>
-            <span>Compartilhar</span>
-        </span>
-
-    </div>
-
-    <div
-        class="comentario-box"
-        id="comentarioBox-filme-1"
-        style="display: none;"
-    >
-
-        <div class="comentario-header">
-            <span>💬 Comentários</span>
-
-            <button
-                type="button"
-                class="fechar-comentario"
-                onclick="fecharComentarios('filme-1')"
-            >
-                ✕
-            </button>
-        </div>
-
-        <div
-            class="comentario-lista"
-            id="listaComentarios-filme-1"
-        >
-            <p class="sem-comentarios">
-                Nenhum comentário ainda. Seja o primeiro!
-            </p>
-        </div>
-
-        <div class="comentario-input-area">
-
-            <input
-                type="text"
-                class="comentario-input"
-                id="inputComentario-filme-1"
-                placeholder="Escreva um comentário..."
-            >
-
-            <button
-                type="button"
-                class="enviar-comentario"
-                onclick="adicionarComentario('filme-1')"
-            >
-                Enviar
-            </button>
-
-        </div>
-
-    </div>
 </div>
 
+
+<!-- COMPONENTE DE FEEDBACK -->
+<div 
+    class="feedback-container"
+    data-feedback="filme-1">
+</div>

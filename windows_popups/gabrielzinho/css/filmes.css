@@ -103,16 +103,6 @@
     border-radius: 8px;
 }
 
-.filme-footer {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-    flex-wrap: wrap;
-}
-
 .interacao {
     display: flex;
     align-items: center;
@@ -541,11 +531,6 @@
     text-align: center;
 }
 
-.filme-footer button.interacao {
-    border: none;
-    font-family: inherit;
-}
-
 /* ============================================================
    🎠 CARROSSEL INFINITO
    ============================================================ */
@@ -593,3 +578,34 @@
         transform: translateX(-50%);
     }
 }
+
+/* ============================================================
+   FEEDBACK COMPONENTE EXTERNO
+   Igual ao sistema de animes
+   ============================================================ */
+
+.feedback-container {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.feedback-container .anime-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 35px;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.feedback-container .interacao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.feedback-container .comentario-box {
+    width: 100%;
+    box-sizing: border-box;
+}
+

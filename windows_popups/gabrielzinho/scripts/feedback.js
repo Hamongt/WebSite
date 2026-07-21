@@ -1,169 +1,91 @@
-
-// ============================================================
-// FEEDBACK.JS
-// Sistema genérico de curtidas, comentários e compartilhamento
-// ============================================================
-
-
-function iniciarFeedback(id) {
-
-    const container =
-        document.querySelector(
-            `[data-feedback="${id}"]`
-        );
+function iniciarFeedback(idAnime, container){
 
     if(!container) return;
 
+    const chave = `anime_${idAnime}`;
 
-    const chave = `feedback_${id}`;
+    const caixa = container.querySelector(".comentario-box");
+    const comentar = container.querySelector(".comentar");
+    const fechar = container.querySelector(".fechar-comentario");
+    const curtir = container.querySelector(".curtir");
+    const contadorLike = container.querySelector(".contador-curtidas");
+    const contadorComentario = container.querySelector(".contador-comentarios");
+    const lista = container.querySelector(".comentario-lista");
+    const input = container.querySelector(".comentario-input");
+    const enviar = container.querySelector(".enviar-comentario");
+    const compartilhar = container.querySelector(".compartilhar");
 
 
-    function pegarDados(){
+    // começa sempre fechado
+    if(caixa){
+        caixa.classList.remove("ativo");
+        caixa.style.display="none";
+    }
 
-        return JSON.parse(
-            localStorage.getItem(chave)
-        ) || {
-            curtidas:0,
-            comentarios:[]
-        };
+
+    function dados(){
+
+        try{
+
+            return JSON.parse(
+                localStorage.getItem(chave)
+            ) || {
+                curtidas:0,
+                comentarios:[]
+            };
+
+        }catch{
+
+            return {
+                curtidas:0,
+                comentarios:[]
+            };
+
+        }
 
     }
 
 
-    function salvar(dados){
+    function salvar(d){
 
         localStorage.setItem(
             chave,
-            JSON.stringify(dados)
+            JSON.stringify(d)
         );
 
     }
 
 
-    const dados = pegarDados();
+
+    function atualizar(){
+
+        let d = dados();
+
+        if(contadorLike)
+            contadorLike.textContent = d.curtidas;
 
 
-    const curtir =
-        container.querySelector(".curtir");
-
-
-    const contadorCurtidas =
-        container.querySelector(".contador-curtidas");
-
-
-    const comentar =
-        container.querySelector(".comentar");
-
-
-    const contadorComentarios =
-        container.querySelector(".contador-comentarios");
-
-
-    const caixa =
-        container.querySelector(".feedback-comentarios");
-
-
-    const lista =
-        container.querySelector(".feedback-lista");
-
-
-    const input =
-        container.querySelector(".feedback-input");
-
-
-    const enviar =
-        container.querySelector(".feedback-enviar");
-
-
-    if(contadorCurtidas)
-        contadorCurtidas.textContent =
-            dados.curtidas;
-
-
-    if(contadorComentarios)
-        contadorComentarios.textContent =
-            dados.comentarios.length;
-
-
-
-    if(curtir){
-
-        curtir.onclick = () => {
-
-            let d = pegarDados();
-
-            d.curtidas++;
-
-            salvar(d);
-
-            contadorCurtidas.textContent =
-                d.curtidas;
-
-            curtir.classList.add("ativo");
-
-            setTimeout(()=>{
-                curtir.classList.remove("ativo");
-            },400);
-
-        };
-
-    }
-
-
-
-    if(comentar){
-
-        comentar.onclick = ()=>{
-
-            caixa.classList.toggle("ativo");
-
-            carregarComentarios();
-
-        };
-
-    }
-
-
-
-    if(enviar){
-
-        enviar.onclick = ()=>{
-
-            if(!input.value.trim())
-                return;
-
-
-            let d = pegarDados();
-
-
-            d.comentarios.push({
-
-                autor:"Anônimo",
-
-                texto:
-                input.value,
-
-                data:
-                new Date().toLocaleString("pt-BR")
-
-            });
-
-
-            salvar(d);
-
-
-            input.value="";
-
-
-            contadorComentarios.textContent =
+        if(contadorComentario)
+            contadorComentario.textContent =
                 d.comentarios.length;
 
+    }
 
-            carregarComentarios();
 
-        };
+
+
+    function escaparHTML(texto){
+
+        const div =
+            document.createElement("div");
+
+        div.textContent =
+            texto || "";
+
+        return div.innerHTML;
 
     }
+
 
 
 
@@ -172,30 +94,88 @@ function iniciarFeedback(id) {
         if(!lista) return;
 
 
-        lista.innerHTML="";
+        const d = dados();
 
 
-        let d = pegarDados();
+        lista.innerHTML = "";
 
 
-        d.comentarios.forEach((c)=>{
+        if(d.comentarios.length === 0){
+
+            lista.innerHTML = `
+                <p class="sem-comentarios">
+                    Nenhum comentário ainda. Seja o primeiro!
+                </p>
+            `;
+
+            return;
+
+        }
 
 
-            lista.innerHTML += `
 
-            <div class="feedback-item">
+        d.comentarios.forEach((comentario,index)=>{
+
+
+            const div =
+                document.createElement("div");
+
+
+            div.className =
+                "comentario-item";
+
+
+            div.innerHTML = `
 
                 <div class="autor">
-                    👤 ${c.autor}
+                    👤 ${escaparHTML(comentario.autor)}
                 </div>
 
                 <div class="texto">
-                    ${c.texto}
+                    ${escaparHTML(comentario.texto)}
                 </div>
 
-            </div>
+                <small>
+                    ${escaparHTML(comentario.data)}
+                </small>
+
+                <button class="btn-deletar-comentario">
+                    🗑️
+                </button>
 
             `;
+
+
+
+            div.querySelector(
+                ".btn-deletar-comentario"
+            ).onclick = ()=>{
+
+
+                const dadosAtuais =
+                    dados();
+
+
+                dadosAtuais.comentarios.splice(
+                    index,
+                    1
+                );
+
+
+                salvar(
+                    dadosAtuais
+                );
+
+
+                atualizar();
+
+                carregarComentarios();
+
+            };
+
+
+            lista.appendChild(div);
+
 
         });
 
@@ -203,8 +183,161 @@ function iniciarFeedback(id) {
 
 
 
-    const compartilhar =
-        container.querySelector(".compartilhar");
+
+
+    if(curtir){
+
+        curtir.onclick = ()=>{
+
+            let d = dados();
+
+            d.curtidas++;
+
+            salvar(d);
+
+            atualizar();
+
+        };
+
+    }
+
+
+
+
+
+    if(comentar){
+
+        comentar.onclick = ()=>{
+
+
+            if(!caixa)
+                return;
+
+
+            const abrir =
+                !caixa.classList.contains("ativo");
+
+
+            caixa.classList.toggle(
+                "ativo",
+                abrir
+            );
+
+
+            caixa.style.display =
+                abrir ? "block" : "none";
+
+
+
+            if(abrir){
+
+                carregarComentarios();
+
+            }
+
+
+        };
+
+    }
+
+
+
+
+
+    if(fechar){
+
+        fechar.onclick = ()=>{
+
+            caixa.classList.remove("ativo");
+
+            caixa.style.display="none";
+
+        };
+
+    }
+
+
+
+
+
+    function adicionar(){
+
+        if(!input)
+            return;
+
+
+        const texto =
+            input.value.trim();
+
+
+        if(!texto)
+            return;
+
+
+
+        let d = dados();
+
+
+
+        d.comentarios.push({
+
+            autor:"Anônimo",
+
+            texto:texto,
+
+            data:
+            new Date()
+            .toLocaleString("pt-BR")
+
+        });
+
+
+
+        salvar(d);
+
+
+        input.value="";
+
+
+        atualizar();
+
+
+        carregarComentarios();
+
+    }
+
+
+
+
+
+    if(enviar){
+
+        enviar.onclick =
+            adicionar;
+
+    }
+
+
+
+    if(input){
+
+        input.addEventListener(
+            "keydown",
+            e=>{
+
+                if(e.key==="Enter"){
+
+                    adicionar();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
 
 
     if(compartilhar){
@@ -212,7 +345,7 @@ function iniciarFeedback(id) {
         compartilhar.onclick = ()=>{
 
             navigator.clipboard.writeText(
-                window.location.href
+                location.href+"#"+idAnime
             );
 
             alert("🔗 Link copiado!");
@@ -220,5 +353,10 @@ function iniciarFeedback(id) {
         };
 
     }
+
+
+
+
+    atualizar();
 
 }

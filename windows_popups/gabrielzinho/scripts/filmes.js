@@ -1,114 +1,63 @@
-// ============================================================
-// 🎬 FILMES.JS
-// Carregador de filmes do Gabrielzinho
-// ============================================================
-
 console.log("🚀 filmes.js carregado");
 
 
 const filmes = [
     {
-        arquivo: "filme-1.html",
-        id: "filme-1"
+        arquivo:"filme-1.html",
+        id:"filme-1"
     }
-
 ];
-
 
 
 const CAMINHO_BASE_FILMES =
 "windows_popups/gabrielzinho/subpaginas/filmes/";
 
 
-
 function carregarFilmes(){
 
-
     const container =
-        document.getElementById(
-            "listaFilmes"
-        );
+        document.getElementById("listaFilmes");
 
 
     const total =
-        document.getElementById(
-            "totalFilmes"
-        );
+        document.getElementById("totalFilmes");
 
 
-    if(!container){
-
-        console.warn(
-            "listaFilmes não encontrado"
-        );
-
+    if(!container)
         return;
 
-    }
+
+    container.innerHTML="";
 
 
-
-    container.innerHTML = "";
-
-
-
-    let quantidade = 0;
-
+    let quantidade=0;
 
 
     filmes.forEach(function(filme){
 
 
-        const caminho =
-            CAMINHO_BASE_FILMES +
-            filme.arquivo;
+        fetch(
+            CAMINHO_BASE_FILMES + filme.arquivo
+        )
 
+        .then(response=>response.text())
 
-
-        fetch(caminho)
-
-
-        .then(function(response){
-
-
-            if(!response.ok){
-
-                throw new Error(
-                    response.status
-                );
-
-            }
-
-
-            return response.text();
-
-
-        })
-
-
-        .then(function(html){
-
+        .then(html=>{
 
 
             const artigo =
-                document.createElement(
-                    "article"
-                );
+                document.createElement("article");
 
 
-            artigo.className =
-                "filme-item";
-
+            artigo.className="filme-item";
 
             artigo.id =
                 filme.id;
 
 
-
             artigo.innerHTML =
                 html;
 
-                
 
             container.appendChild(
                 artigo
@@ -118,50 +67,71 @@ function carregarFilmes(){
             quantidade++;
 
 
-            if(total){
-
-                total.textContent =
-                    quantidade;
-
-            }
+            if(total)
+                total.textContent=quantidade;
 
 
-            console.log(
-                "✅ Filme carregado:",
-                filme.id
+
+            carregarFeedback(
+                filme.id,
+                artigo
             );
 
 
         })
 
-
-        .catch(function(erro){
-
+        .catch(erro=>{
 
             console.error(
-                "❌ Erro:",
-                caminho,
+                "Erro carregando filme:",
                 erro
             );
 
-
-            container.innerHTML += `
-
-            <div class="erro-filme">
-
-                ⚠️ Não foi possível carregar:
-
-                <br>
-
-                ${caminho}
-
-            </div>
-
-            `;
-
-
         });
 
+
+    });
+
+
+}
+
+
+
+function carregarFeedback(idFilme, artigo){
+
+
+    const container =
+        artigo.querySelector(
+            ".feedback-container"
+        );
+
+
+    if(!container)
+        return;
+
+
+
+    fetch(
+    "windows_popups/gabrielzinho/componentes/feedback.html"
+    )
+
+    .then(response=>response.text())
+
+    .then(html=>{
+
+
+        container.innerHTML =
+            html;
+
+
+        if(typeof iniciarFeedback === "function"){
+
+            iniciarFeedback(
+                idFilme,
+                container
+            );
+
+        }
 
 
     });
@@ -172,6 +142,6 @@ function carregarFilmes(){
 
 
 document.addEventListener(
-    "DOMContentLoaded",
-    carregarFilmes
+"DOMContentLoaded",
+carregarFilmes
 );

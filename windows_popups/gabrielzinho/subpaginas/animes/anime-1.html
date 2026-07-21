@@ -59,33 +59,10 @@
     </p>
 </div>
 
-<!-- ===== RODAPÉ COM INTERAÇÕES ===== -->
-<div class="anime-footer">
-    <span class="interacao curtir" data-anime="anime-1">
-        <span class="icone">❤️</span>
-        <span class="contador" id="curtidas-anime-1">0</span>
-    </span>
-    <span class="interacao comentar" data-anime="anime-1">
-        <span class="icone">💬</span>
-        <span class="contador" id="comentarios-anime-1">0</span>
-    </span>
-    <span class="interacao compartilhar" onclick="copiarLink()">
-        <span class="icone">🔗</span>
-        <span>Compartilhar</span>
-    </span>
-</div>
 
-<!-- ===== CAIXA DE COMENTÁRIOS ===== -->
-<div class="comentario-box" id="comentarioBox-anime-1" style="display: none;">
-    <div class="comentario-header">
-        <span>💬 Comentários</span>
-        <button class="fechar-comentario" onclick="fecharComentarios('anime-1')">✕</button>
-    </div>
-    <div class="comentario-lista" id="listaComentarios-anime-1">
-        <p class="sem-comentarios">Nenhum comentário ainda. Seja o primeiro!</p>
-    </div>
-    <div class="comentario-input-area">
-        <input type="text" class="comentario-input" id="inputComentario-anime-1" placeholder="Escreva um comentário...">
-        <button class="enviar-comentario" onclick="adicionarComentario('anime-1')">Enviar</button>
-    </div>
+
+<!-- ===== FEEDBACK COMPONENTE ===== -->
+<div
+    class="feedback-container"
+    data-feedback="anime-1">
 </div>

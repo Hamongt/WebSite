@@ -825,28 +825,36 @@ function abrirSubpaginaGabrielzinho(nomePagina) {
                     "gabrielzinhoAnimesCss"
                 );
 
+                // IMPORTANTE:
+                // feedback.js precisa carregar ANTES do animes.js
+
                 carregarScriptUmaVez(
-                    "windows_popups/gabrielzinho/scripts/animes.js",
-                    "gabrielzinhoAnimesJs"
+                    "windows_popups/gabrielzinho/scripts/feedback.js",
+                    "gabrielzinhoFeedbackJs"
                 )
-                    .then(function () {
+                .then(function(){
 
-                        if (
-                            typeof carregarAnimes ===
-                            "function"
-                        ) {
-                            carregarAnimes();
-                        }
+                    return carregarScriptUmaVez(
+                        "windows_popups/gabrielzinho/scripts/animes.js",
+                        "gabrielzinhoAnimesJs"
+                    );
 
-                    })
-                    .catch(function (erro) {
+                })
+                .then(function(){
 
-                        console.error(
-                            "❌ Erro ao carregar animes.js:",
-                            erro
-                        );
+                    if(typeof carregarAnimes === "function"){
+                        carregarAnimes();
+                    }
 
-                    });
+                })
+                .catch(function(erro){
+
+                    console.error(
+                        "❌ Erro ao carregar sistema de animes:",
+                        erro
+                    );
+
+                });
             }
             if (nomePagina === "filmes") {
 
@@ -857,9 +865,17 @@ function abrirSubpaginaGabrielzinho(nomePagina) {
 
 
                 carregarScriptUmaVez(
-                    "windows_popups/gabrielzinho/scripts/filmes.js",
-                    "gabrielzinhoFilmesJs"
+                    "windows_popups/gabrielzinho/scripts/feedback.js",
+                    "gabrielzinhoFeedbackJs"
                 )
+                .then(function () {
+
+                    return carregarScriptUmaVez(
+                        "windows_popups/gabrielzinho/scripts/filmes.js",
+                        "gabrielzinhoFilmesJs"
+                    );
+
+                })
                 .then(function () {
 
                     if (
@@ -874,7 +890,7 @@ function abrirSubpaginaGabrielzinho(nomePagina) {
                 .catch(function (erro) {
 
                     console.error(
-                        "❌ Erro ao carregar filmes.js:",
+                        "❌ Erro ao carregar sistema de filmes:",
                         erro
                     );
 
