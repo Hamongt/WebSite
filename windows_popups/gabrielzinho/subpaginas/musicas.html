@@ -2,7 +2,123 @@
 
 
 
+<!-- =========================================================
+     SUBPÁGINA: MÚSICAS
 
+     Carregado dentro de #paginaGabrielzinho
+
+     Estrutura igual:
+     - postagens.html
+     - filmes.html
+     - animes.html
+
+     As músicas individuais ficam em:
+     subpaginas/musicas/
+        musica-1.html
+        musica-2.html
+        musica-3.html
+     ========================================================= -->
+
+<div class="subpagina-gabrielzinho subpagina-musicas">
+
+    <div id="voltarContainer"></div>
+
+    <div class="subpagina-identificacao">
+
+        <!-- ========================================================
+             CABEÇALHO FIXO
+             ======================================================== -->
+        <div class="fixo"
+            style="
+                background: rgba(100, 255, 220, 0.05);
+                border: 1px solid rgba(100, 255, 220, 0.08);
+                border-radius: 12px;
+                padding: 20px;
+                text-align: center;
+                margin-bottom: 20px;
+                width: 100%;
+            ">
+
+            <h2 style="
+                color: rgba(255,255,255,0.9);
+                font-size: 22px;
+                font-weight: 300;
+                margin: 0 0 8px 0;
+            ">
+                🎵 Minha Coleção de Músicas
+            </h2>
+
+            <p style="
+                color: rgba(255,255,255,0.4);
+                font-size: 14px;
+                margin: 0;
+            ">
+                Algumas das músicas que marcaram minha vida!
+            </p>
+
+            <div style="
+                margin-top: 12px;
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            ">
+
+                <span style="
+                    background: rgba(100,255,220,0.08);
+                    color: rgba(100,255,220,0.7);
+                    padding: 4px 12px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                ">
+                    🎧 Pop
+                </span>
+
+                <span style="
+                    background: rgba(255,180,100,0.08);
+                    color: rgba(255,180,100,0.7);
+                    padding: 4px 12px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                ">
+                    🎸 Rock
+                </span>
+
+                <span style="
+                    background: rgba(255,120,180,0.08);
+                    color: rgba(255,120,180,0.7);
+                    padding: 4px 12px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                ">
+                    🎹 Instrumental
+                </span>
+
+                <span style="
+                    background: rgba(120,180,255,0.08);
+                    color: rgba(120,180,255,0.7);
+                    padding: 4px 12px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                ">
+                    🌌 Lo-fi
+                </span>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div
+    id="listaMusicas"
+    class="musicas-container"
+>
+    <div class="posts-carregando">
+        Carregando músicas...
+    </div>
+</div>
+
+</div>
 
 
 <!-- COMPONENTE DE FEEDBACK -->
