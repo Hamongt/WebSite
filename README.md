@@ -1,1 +1,1 @@
-https://github.com/Hamongt/WebSite.git
+https://hamongt.github.io/WebSite/
